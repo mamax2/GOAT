@@ -34,4 +34,187 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* =========================================
+   GLOBAL THEME — Peach / Soft Warm
+   ========================================= */
+
+/* ---------- Base palette ---------- */
+:root {
+  /* Peach core */
+  --peach: #ffb3a7; /* base pesca */
+  --peach-600: #ff9e8f; /* -1 step */
+  --peach-700: #f07f6f; /* -2 step */
+  --peach-300: #ffd1c9; /* +1 step */
+  --peach-200: #ffe3de; /* +2 step */
+
+  /* Accents & neutrals caldi */
+  --rose: #e06a7c; /* accento rosa/rosso tenue */
+  --apricot: #ffc48f; /* accento aranciato */
+  --ink: #231916; /* testo principale */
+  --ink-2: #3b2b27; /* testo secondario */
+  --shell: #fff7f4; /* sfondo chiaro */
+  --clay: #e9d8d3; /* bordo/surface outline */
+
+  /* ---------- Ionic Required Color Vars ---------- */
+  /* PRIMARY = peach */
+  --ion-color-primary: var(--peach);
+  --ion-color-primary-rgb: 255, 179, 167;
+  --ion-color-primary-contrast: #241815;
+  --ion-color-primary-contrast-rgb: 36, 24, 21;
+  --ion-color-primary-shade: var(--peach-600);
+  --ion-color-primary-tint: var(--peach-300);
+
+  /* SECONDARY = apricot */
+  --ion-color-secondary: var(--apricot);
+  --ion-color-secondary-rgb: 255, 196, 143;
+  --ion-color-secondary-contrast: #20160f;
+  --ion-color-secondary-shade: #f0b27f;
+  --ion-color-secondary-tint: #ffd7b3;
+
+  /* TERTIARY = rose */
+  --ion-color-tertiary: var(--rose);
+  --ion-color-tertiary-rgb: 224, 106, 124;
+  --ion-color-tertiary-contrast: #fff7f5;
+  --ion-color-tertiary-shade: #c7596a;
+  --ion-color-tertiary-tint: #eb8c9a;
+
+  /* STATUS */
+  --ion-color-success: #4da37f;
+  --ion-color-success-contrast: #0f1a16;
+  --ion-color-success-shade: #418b6c;
+  --ion-color-success-tint: #69b596;
+
+  --ion-color-warning: #ffd48a;
+  --ion-color-warning-contrast: #1b1408;
+  --ion-color-warning-shade: #e6bc77;
+  --ion-color-warning-tint: #ffe0aa;
+
+  --ion-color-danger: #d45454;
+  --ion-color-danger-contrast: #fff7f7;
+  --ion-color-danger-shade: #b84949;
+  --ion-color-danger-tint: #df7878;
+
+  /* App background & text */
+  --ion-background-color: var(--shell);
+  --ion-background-color-rgb: 255, 247, 244;
+  --ion-text-color: var(--ink);
+  --ion-text-color-rgb: 35, 25, 22;
+
+  /* Surfaces */
+  --surface: #fffdfa;
+  --surface-elev: #fff3ef;
+  --surface-border: var(--clay);
+
+  /* Radius & shadows */
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --shadow-soft: 0 6px 20px rgba(35, 25, 22, 0.07);
+  --shadow-strong: 0 16px 40px rgba(35, 25, 22, 0.13);
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Inter", "Satoshi",
+    Roboto, "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+  --font-weight-heading: 700;
+  --font-weight-body: 450;
+}
+
+/* ---------- Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #171212;
+    --ion-background-color-rgb: 23, 18, 18;
+    --ion-text-color: #f7ece9;
+
+    --surface: #1d1717;
+    --surface-elev: #241c1c;
+    --surface-border: #352828;
+
+    /* Peach attenuato per dark */
+    --ion-color-primary: #ffab9e;
+    --ion-color-primary-contrast: #0b0909;
+    --ion-color-primary-shade: #e59589;
+    --ion-color-primary-tint: #ffc6bd;
+
+    --ion-color-secondary: #ffcf9e;
+    --ion-color-tertiary: #f08293;
+
+    --ion-color-medium: #b9a7a3;
+    --ion-color-light: #211a1a;
+    --ion-color-light-contrast: #f7ece9;
+    --ion-color-dark: #f7ece9;
+    --ion-color-dark-contrast: #0b0909;
+  }
+}
+
+/* ---------- Resets ---------- */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+ion-app,
+ion-content {
+  height: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  color: var(--ion-text-color);
+  background: var(--ion-background-color);
+}
+
+/* ---------- Ionic tuning ---------- */
+ion-toolbar {
+  --background: var(--surface);
+  --color: var(--ion-text-color);
+  box-shadow: var(--shadow-soft);
+}
+ion-card {
+  --background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+ion-button {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 14px rgba(255, 179, 167, 0.22);
+}
+ion-chip {
+  border-radius: 999px;
+}
+
+/* ---------- Utilities ---------- */
+.bg-peach {
+  background: var(--peach) !important;
+  color: var(--ion-color-primary-contrast) !important;
+}
+.text-peach {
+  color: var(--peach) !important;
+}
+.border-soft {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+}
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+.round-xl {
+  border-radius: var(--radius-xl);
+}
+
+.peach-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--peach) 0%,
+    var(--peach-300) 45%,
+    #fff0eb 100%
+  );
+  color: #201615;
+}
+
+/* Accessibilità focus */
+:focus-visible {
+  outline: 3px solid var(--peach-300);
+  outline-offset: 2px;
+}

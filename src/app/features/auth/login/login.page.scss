@@ -1,0 +1,28 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  ion-header {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--ion-color-primary);
+  }
+  ion-list {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    max-width: 520px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    .buttons {
+      margin-top: 30px;
+      ion-button {
+        border-radius: 50px;
+        margin: 0 20px;
+        background-color: var(--ion-color-primary);
+      }
+    }
+  }
+}

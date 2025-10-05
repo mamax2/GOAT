@@ -1,34 +1,19 @@
 import { Routes } from '@angular/router';
-import { canActivateAuth } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'todos', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'login',
     loadComponent: () =>
-      import('./features/auth/login.page').then((m) => m.LoginPage),
+      import('./features/auth/login/login.page').then((m) => m.LoginPage),
   },
   {
-    path: 'todos',
-    canActivate: [canActivateAuth],
+    path: 'home',
+    canActivate: [
+      () => import('./core/guards/auth.guard').then((g) => g.canActivateAuth),
+    ],
     loadComponent: () =>
-      import('./features/todos/todos.page').then((m) => m.TodosPage),
+      import('./features/home/home.page').then((m) => m.HomePage),
   },
-  {
-    path: 'profile',
-    canActivate: [canActivateAuth],
-    loadComponent: () =>
-      import('./features/profile/profile.page').then((m) => m.ProfilePage),
-  },
-  { path: '**', redirectTo: 'todos' },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./features/auth/login.page').then((m) => m.LoginPage),
-  },
-  {
-    path: 'todos',
-    loadComponent: () =>
-      import('./features/todos/todos.page').then((m) => m.TodosPage),
-  },
+  { path: '**', redirectTo: 'home' },
 ];
