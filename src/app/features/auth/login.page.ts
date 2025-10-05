@@ -62,7 +62,6 @@ export class LoginPage {
   private auth = inject(AuthService);
   private router = inject(Router);
 
-  // usare semplici proprietà, NON funzioni/signals in [(ngModel)]
   email = '';
   pass = '';
 

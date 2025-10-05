@@ -19,7 +19,7 @@ import { Todo, TodoService } from 'src/app/core/services/todo-service';
 @Component({
   standalone: true,
   imports: [
-    FormsModule, // << per [(ngModel)]
+    FormsModule,
     IonHeader,
     IonToolbar,
     IonTitle,
