@@ -1,0 +1,16 @@
+
+rules_version = '2';
+service cloud.firestore {
+match /databases/{database}/documents {
+// Collezione todos: ogni utente vede/scrive solo i propri
+match /todos/{id} {
+allow read, write: if request.auth != null && request.resource.data.uid == request.auth.uid;
+}
+
+
+// eventuale profilo utente
+match /users/{uid} {
+allow read, write: if request.auth != null && request.auth.uid == uid;
+}
+}
+}
