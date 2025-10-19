@@ -1,0 +1,23 @@
+<ion-header><div class="goat">🐐</div></ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-title class="header">VUOI ESSERE IL GOAT?</ion-title>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="pass"></ion-input>
+    </ion-item>
+
+    <ion-buttons class="buttons">
+      <ion-button class="btn-peach" (click)="doLogin()">Login</ion-button>
+      <ion-button fill="outline" class="btn-peach-outline" (click)="doSignup()"
+        >Signup</ion-button
+      >
+    </ion-buttons>
+  </ion-list>
+</ion-content>

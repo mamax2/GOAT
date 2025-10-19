@@ -1,0 +1,49 @@
+@use "mixins" as mx; // grazie a includePaths
+
+ion-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 10vh;
+
+  background-color: var(--ion-color-primary);
+  .goat {
+    font-size: 40px;
+    margin-left: 45vw;
+  }
+}
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+
+  .header,
+  ion-label {
+    color: var(--ion-color-tertiary);
+    font-weight: bold;
+  }
+
+  ion-list {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    max-width: 520px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    gap: 20px;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
+
+.error {
+  color: #d45454;
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+}

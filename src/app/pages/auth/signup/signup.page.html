@@ -1,0 +1,56 @@
+<ion-header><div class="goat">🐐</div></ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-title class="header"
+      >VUOI ESSERE IL GOAT? <br />
+      ISCRIVITI</ion-title
+    >
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input
+        [(ngModel)]="name"
+        autocomplete="name"
+        class="input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="email"
+        autocomplete="email"
+        class="input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input
+        type="password"
+        [(ngModel)]="pass"
+        autocomplete="new-password"
+        class="input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button
+      expand="block"
+      class="btn-peach"
+      (click)="doSignup()"
+      [disabled]="loading"
+    >
+      {{ loading ? 'Attendi…' : 'Crea account' }}
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      class="btn-peach-outline"
+      fill="outline"
+      (click)="goLogin()"
+    >
+      Hai già un account? Login
+    </ion-button>
+  </ion-list>
+</ion-content>
