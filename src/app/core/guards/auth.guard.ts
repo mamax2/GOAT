@@ -1,12 +1,11 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth-service';
 
 export const canActivateAuth: CanActivateFn = async () => {
-  const auth = inject(Auth);
+  const auth = inject(AuthService);
   const router = inject(Router);
-  const user = auth.currentUser;
-  if (user) return true;
+  if (auth.isAuthenticated()) return true;
   await router.navigateByUrl('/login');
   return false;
 };

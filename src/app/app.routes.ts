@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadComponent: () =>
-      import('./features/auth/login/login.page').then((m) => m.LoginPage),
+      import('./pages/auth/login/login.page').then((m) => m.LoginPage),
   },
   {
     path: 'home',
@@ -13,7 +13,11 @@ export const routes: Routes = [
       () => import('./core/guards/auth.guard').then((g) => g.canActivateAuth),
     ],
     loadComponent: () =>
-      import('./features/home/home.page').then((m) => m.HomePage),
+      import('./pages/home/home.page').then((m) => m.HomePage),
   },
-  { path: '**', redirectTo: 'home' },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/auth/signup/signup.page').then((m) => m.SignupPage),
+  },
 ];

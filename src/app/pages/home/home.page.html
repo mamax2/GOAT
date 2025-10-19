@@ -1,0 +1,69 @@
+<ion-header class="hero-header">
+  <div class="hero peach-gradient">
+    <h1>Benvenut@ in <strong>GOAT</strong></h1>
+    <img src="assets/logo-goat.png" alt="GOAT" class="hero-logo" />
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">Richieste</div>
+    <div class="tab">Offerte</div>
+    <div class="tab">Last minute</div>
+  </div>
+
+  <div class="filters">
+    <ion-button fill="outline" size="small" class="filter-btn">
+      <ion-icon name="filter-outline"></ion-icon>
+      Filtri
+    </ion-button>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding page">
+  <ion-list lines="none" class="card-list">
+    <ion-card *ngFor="let it of items" class="request-card">
+      <div class="card-header">
+        <h2>{{ it.title }}</h2>
+        <ion-icon name="school-outline"></ion-icon>
+      </div>
+
+      <div class="card-meta">
+        scuola • superiori • matematica • principiante
+      </div>
+
+      <p class="card-desc">
+        {{ it.description || 'RichText allows for various styles and features to
+        be customized within one set of text, such as' }}
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="card-footer">
+        <div class="info">2h • 5 posti • 50 credits</div>
+        <ion-button size="small" color="primary" class="proponiti"
+          >Proponiti</ion-button
+        >
+      </div>
+    </ion-card>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="bottom-nav">
+  <ion-tab-bar>
+    <ion-tab-button tab="home" selected>
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="annunci">
+      <ion-icon name="document-outline"></ion-icon>
+      <ion-label>Annunci</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="match">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Match</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

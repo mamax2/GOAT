@@ -1,0 +1,11 @@
+# Optional: if you deploy under Apache and want pretty URLs, otherwise not needed.
+Options -MultiViews
+RewriteEngine On
+
+# Example rewrites (commented by default):
+#RewriteCond %{REQUEST_URI} ^/api/auth/signup$ [OR]
+#RewriteCond %{REQUEST_URI} ^/api/auth/login$
+#RewriteRule ^api/auth/(.*)$ auth.php?r=$1 [QSA,L]
+
+#RewriteCond %{REQUEST_URI} ^/api/items$
+#RewriteRule ^api/items$ items.php [QSA,L]

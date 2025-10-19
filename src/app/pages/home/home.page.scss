@@ -1,0 +1,152 @@
+.hero-header {
+  background: transparent;
+  box-shadow: none;
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 20px 24px;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: linear-gradient(135deg, #ffb3a7 0%, #ffd1c9 60%, #fff0eb 100%);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    background: var(--ion-background-color);
+    padding-top: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 6px 0;
+    font-weight: 600;
+    color: #777;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .tab.active {
+    color: #000;
+  }
+
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    bottom: 0;
+    height: 2px;
+    background: var(--ion-color-primary);
+  }
+
+  .filters {
+    display: flex;
+    justify-content: flex-start;
+    padding: 12px 20px;
+    background: var(--ion-background-color);
+  }
+
+  .filter-btn {
+    --border-color: #ccc;
+    --color: #333;
+    --border-radius: 999px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+}
+
+/* CARD LIST */
+.page {
+  --background: var(--ion-background-color);
+}
+
+.card-list {
+  margin-top: 8px;
+  display: grid;
+  gap: 14px;
+}
+
+.request-card {
+  border-radius: 18px;
+  padding: 16px 18px;
+  background: var(--surface, #fffdfa);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    ion-icon {
+      color: var(--ion-color-primary);
+      font-size: 1.4rem;
+    }
+  }
+
+  .card-meta {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin-bottom: 8px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .info {
+      color: var(--ion-color-danger, #e64b3b);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .proponiti {
+      --border-radius: 999px;
+      --background: var(--ion-color-primary);
+      --color: white;
+      font-weight: 600;
+    }
+  }
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  ion-tab-bar {
+    --background: var(--surface, #fff);
+    --color: #888;
+    --color-selected: var(--ion-color-primary);
+  }
+}

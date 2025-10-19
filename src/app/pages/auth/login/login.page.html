@@ -13,11 +13,13 @@
       <ion-input type="password" [(ngModel)]="pass"></ion-input>
     </ion-item>
 
-    <ion-buttons class="buttons">
-      <ion-button class="btn-peach" (click)="doLogin()">Login</ion-button>
-      <ion-button fill="outline" class="btn-peach-outline" (click)="doSignup()"
-        >Signup</ion-button
-      >
-    </ion-buttons>
+    <div class="buttons">
+      <ion-chip class="chip-peach" (click)="doLogin()">
+        <ion-label>Login</ion-label>
+      </ion-chip>
+      <ion-chip class="chip-peach-outline" (click)="doSignup()">
+        <ion-label>Signup</ion-label>
+      </ion-chip>
+    </div>
   </ion-list>
 </ion-content>

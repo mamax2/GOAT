@@ -1,3 +1,0 @@
-npx firebase-tools emulators:start   # in una finestra
-
-ionic serve                          # in un’altra finestra

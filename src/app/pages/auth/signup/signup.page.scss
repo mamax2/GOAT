@@ -37,7 +37,14 @@ ion-content {
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+
+      ion-chip {
+        width: 100%;
+        max-width: 320px;
+      }
     }
   }
 }

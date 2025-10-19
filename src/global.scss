@@ -121,7 +121,7 @@
 }
 
 /* ---------- Dark Mode ---------- */
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
     --ion-background-color: #171212;
     --ion-background-color-rgb: 23, 18, 18;
@@ -131,7 +131,7 @@
     --surface-elev: #241c1c;
     --surface-border: #352828;
 
-    /* Peach attenuato per dark */
+    /* Peach attenuato per dark */ /*
     --ion-color-primary: #ffab9e;
     --ion-color-primary-contrast: #0b0909;
     --ion-color-primary-shade: #e59589;
@@ -146,7 +146,7 @@
     --ion-color-dark: #f7ece9;
     --ion-color-dark-contrast: #0b0909;
   }
-}
+}*/
 
 /* ---------- Resets ---------- */
 * {
@@ -176,12 +176,148 @@ ion-card {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-soft);
 }
-ion-button {
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 14px rgba(255, 179, 167, 0.22);
-}
+
 ion-chip {
   border-radius: 999px;
+}
+
+/* ---------- Buttons ---------- */
+ion-button.btn-peach {
+  --background: linear-gradient(
+    135deg,
+    var(--peach-700) 0%,
+    var(--peach) 60%,
+    var(--peach-300) 100%
+  );
+  --background-hover: linear-gradient(
+    135deg,
+    var(--peach-700) 0%,
+    var(--peach-300) 100%
+  );
+  --background-activated: linear-gradient(
+    135deg,
+    var(--peach-700) 0%,
+    var(--peach-600) 100%
+  );
+  --color: #fffdfa;
+  --border-radius: 999px;
+  --padding-start: 28px;
+  --padding-end: 28px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --box-shadow: 0 12px 26px rgba(240, 127, 111, 0.28);
+
+  &::part(native) {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+}
+
+ion-button.btn-peach-outline,
+ion-button.btn-peach-outline[fill="outline"],
+ion-button.btn-peach-outline.button-outline {
+  --background: transparent;
+  --color: var(--rose);
+  --border-color: var(--rose);
+  --border-width: 2px;
+  --border-style: solid;
+  --border-radius: 999px;
+  --padding-start: 28px;
+  --padding-end: 28px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --background-hover: rgba(224, 106, 124, 0.12);
+  --background-activated: rgba(224, 106, 124, 0.18);
+  --box-shadow: 0 10px 22px rgba(224, 106, 124, 0.12);
+
+  &::part(native) {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+}
+
+/* ---------- Chips ---------- */
+ion-chip.chip-peach,
+ion-chip.chip-peach-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+ion-chip.chip-peach {
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--peach-700) 0%,
+    var(--peach) 60%,
+    var(--peach-300) 100%
+  );
+  color: #fffdfa;
+  box-shadow: 0 12px 26px rgba(240, 127, 111, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &::part(native) {
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    padding-inline: 28px;
+    padding-block: 12px;
+    border-radius: inherit;
+  }
+
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]) {
+    box-shadow: 0 16px 32px rgba(240, 127, 111, 0.32);
+    transform: translateY(-1px);
+  }
+
+  &:active:not([disabled]) {
+    box-shadow: 0 8px 20px rgba(240, 127, 111, 0.24);
+    transform: translateY(0);
+  }
+
+  &[disabled] {
+    opacity: 0.65;
+    box-shadow: none;
+    pointer-events: none;
+  }
+}
+
+ion-chip.chip-peach-outline {
+  border-radius: 999px;
+  background: transparent;
+  color: var(--rose);
+  border: 2px solid var(--rose);
+  box-shadow: 0 10px 22px rgba(224, 106, 124, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+  &::part(native) {
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    padding-inline: 28px;
+    padding-block: 12px;
+    border-radius: inherit;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(224, 106, 124, 0.1);
+    box-shadow: 0 12px 26px rgba(224, 106, 124, 0.18);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    background: rgba(224, 106, 124, 0.14);
+    transform: translateY(0);
+  }
 }
 
 /* ---------- Utilities ---------- */
