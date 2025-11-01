@@ -1,70 +1,103 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
-import { environment } from '../../../environments/environment';
+// src/app/core/services/auth-service.ts (schema rapido)
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
-export interface User {
+export interface AuthUser {
   id: number;
   name: string;
   email: string;
-  password: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private http = inject(HttpClient);
-  private base = environment.apiBase;
+  private base = 'http://localhost:8888/goat/api';
+  constructor(private http: HttpClient) {}
 
-  private _user$ = new BehaviorSubject<User | null>(this.readUser());
-  user$ = this._user$.asObservable();
+  async signup(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<{ message: string }> {
+    const payload = {
+      name: (name ?? '').trim(),
+      email: (email ?? '').trim().toLowerCase(),
+      password: password ?? '',
+    };
 
-  private readUser(): User | null {
-    const raw = localStorage.getItem('user');
     try {
-      return raw ? (JSON.parse(raw) as User) : null;
-    } catch {
-      return null;
+      const res = await firstValueFrom(
+        this.http.post<{ message: string }>(`${this.base}/signup.php`, payload)
+      );
+      return res;
+    } catch (err) {
+      throw this.normalizeError(err);
     }
   }
-  private setSession(token: string, user: User) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
-    this._user$.next(user);
+
+  /** LOGIN
+   *  crea la sessione sul backend (cookie). */
+  async login(
+    email: string,
+    password: string
+  ): Promise<{ message: string; user: AuthUser }> {
+    const payload = {
+      email: email.trim().toLowerCase(),
+      password: password ?? '',
+    };
+
+    try {
+      const res = await firstValueFrom(
+        this.http.post<{ message: string; user: AuthUser }>(
+          `${this.base}/login.php`,
+          payload,
+          { withCredentials: true }
+        )
+      );
+      return res;
+    } catch (err) {
+      throw this.normalizeError(err);
+    }
   }
 
-  async signup(name: string, email: string, password: string) {
-    const res = await firstValueFrom(
-      this.http.post<any>(`${this.base}/auth.php?r=signup`, {
-        name,
-        email,
-        password,
-      })
+  /** ME
+   * legge l’utente dalla sessione. */
+  async me(): Promise<{ user: AuthUser }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.get<{ user: AuthUser }>(`${this.base}/me.php`, {
+          withCredentials: true,
+        })
+      );
+      return res;
+    } catch (err) {
+      throw this.normalizeError(err);
+    }
+  }
+
+  /** LOGOUT
+   * distrugge la sessione. */
+  async logout() {
+    return await firstValueFrom(
+      this.http.post(
+        `${this.base}/logout.php`,
+        {},
+        {
+          withCredentials: true,
+          responseType: 'text' as const,
+        }
+      )
     );
-    this.setSession(res.token, res.user);
-    return res.user as User;
   }
 
-  async login(email: string, password: string) {
-    const res = await firstValueFrom(
-      this.http.post<any>(`${this.base}/auth.php?r=login`, { email, password })
-    );
-    this.setSession(res.token, res.user);
-    return res.user as User;
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this._user$.next(null);
-  }
-
-  get token() {
-    return localStorage.getItem('token');
-  }
-  get currentUser() {
-    return this._user$.value;
-  }
-  isAuthenticated() {
-    return !!this.token;
+  /** Normalizza gli errori HTTP in messaggi leggibili dalla UI. */
+  private normalizeError(err: any): Error {
+    const http = err as HttpErrorResponse;
+    const msg =
+      (http?.error && (http.error.error || http.error.message)) ||
+      http?.statusText ||
+      http?.message ||
+      'Errore di rete';
+    return new Error(msg);
   }
 }

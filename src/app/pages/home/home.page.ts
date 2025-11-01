@@ -16,6 +16,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonFooter,
+  IonRouterLinkWithHref,
 } from '@ionic/angular/standalone';
 
 import { ItemsService, Item } from './items.service';
@@ -42,6 +43,7 @@ import { AuthService } from 'src/app/core/services/auth-service';
     IonLabel,
     IonInput,
     IonButton,
+    IonRouterLinkWithHref,
   ],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
@@ -54,8 +56,7 @@ export class HomePage {
   items: Item[] = [];
   title = '';
 
-  constructor() {
-    // con PHP/JWT non serve l'uid: il backend lo ricava dal token
+  constructor(router: Router) {
     this.refresh();
   }
 
@@ -83,8 +84,16 @@ export class HomePage {
     this.itemsSvc.remove(it.id).subscribe(() => this.refresh());
   }
 
-  logout() {
-    this.auth.logout();
-    this.router.navigateByUrl('/login');
+  async doLogout() {
+    try {
+      await this.auth.logout(); // POST /api/logout.php { withCredentials: true }
+      await this.router.navigateByUrl('/login', { replaceUrl: true });
+    } catch (err) {
+      console.error('Logout fallito', err);
+    }
+  }
+
+  goToProfile() {
+    this.router.navigateByUrl('/profile');
   }
 }

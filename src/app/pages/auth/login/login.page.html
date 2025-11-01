@@ -1,25 +1,67 @@
-<ion-header><div class="goat">🐐</div></ion-header>
+<ion-header>
+  <div class="goat" aria-label="GOAT">🐐</div>
+</ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list>
-    <ion-title class="header">VUOI ESSERE IL GOAT?</ion-title>
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+  <form (ngSubmit)="doLogin()" autocomplete="on">
+    <ion-list>
+      <ion-title class="header">VUOI ESSERE IL GOAT?</ion-title>
 
-    <ion-item>
-      <ion-label position="stacked">Password</ion-label>
-      <ion-input type="password" [(ngModel)]="pass"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          (keyup.enter)="doLogin()"
+        >
+        </ion-input>
+      </ion-item>
 
-    <div class="buttons">
-      <ion-chip class="chip-peach" (click)="doLogin()">
-        <ion-label>Login</ion-label>
-      </ion-chip>
-      <ion-chip class="chip-peach-outline" (click)="doSignup()">
-        <ion-label>Signup</ion-label>
-      </ion-chip>
-    </div>
-  </ion-list>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input
+          type="password"
+          autocomplete="current-password"
+          [(ngModel)]="pass"
+          name="password"
+          required
+          (keyup.enter)="doLogin()"
+        >
+        </ion-input>
+      </ion-item>
+
+      @if (errorMsg()) {
+      <div class="error">{{ errorMsg() }}</div>
+      }
+
+      <div class="buttons" [class.loading]="loading()">
+        <ion-chip
+          class="chip-peach"
+          (click)="doLogin()"
+          [disabled]="loading()"
+          role="button"
+          tabindex="0"
+          aria-busy="{{loading()}}"
+        >
+          <ion-label style="color: white"
+            >{{ loading() ? 'Accesso…' : 'Accedi' }}</ion-label
+          >
+        </ion-chip>
+
+        <ion-chip
+          class="chip-peach-outline"
+          (click)="goToSignup()"
+          [disabled]="loading()"
+          role="button"
+          tabindex="0"
+        >
+          <ion-label>Non hai un account? Registrati</ion-label>
+        </ion-chip>
+      </div>
+    </ion-list>
+  </form>
 </ion-content>

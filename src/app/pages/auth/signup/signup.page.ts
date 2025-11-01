@@ -5,13 +5,10 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar,
   IonItem,
   IonInput,
-  IonButton,
   IonList,
   IonLabel,
-  IonButtons,
   IonChip,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/core/services/auth-service';
@@ -25,13 +22,10 @@ import { AuthService } from 'src/app/core/services/auth-service';
     IonContent,
     IonHeader,
     IonTitle,
-    IonToolbar,
     IonItem,
     IonInput,
-    IonButton,
     IonList,
     IonLabel,
-    IonButtons,
   ],
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
@@ -48,16 +42,33 @@ export class SignupPage {
 
   async doSignup() {
     this.error = '';
-    if (!this.name.trim() || !this.email.trim() || this.pass.length < 6) {
-      this.error = 'Compila tutti i campi (password ≥ 6).';
+
+    const name = (this.name ?? '').trim();
+    const email = (this.email ?? '').trim().toLowerCase();
+    const pass = this.pass ?? '';
+
+    if (!name || !email || pass.length < 8) {
+      this.error = 'Compila tutti i campi (password ≥ 8).';
       return;
     }
+
+    this.loading = true;
     try {
-      this.loading = true;
-      await this.auth.signup(this.name.trim(), this.email.trim(), this.pass);
-      this.router.navigateByUrl('/home');
+      await this.auth.signup(name, email, pass);
+      await this.auth.login(email, pass);
+      await this.router.navigateByUrl('/home', { replaceUrl: true });
     } catch (e: any) {
-      this.error = e?.error?.error || 'Registrazione fallita';
+      console.log('Signup error:', e);
+
+      if (e?.status === 422 && e?.error?.errors) {
+        const messages = Object.values(e.error.errors) as string[];
+        this.error = messages.join(' • ');
+      } else if (e?.status === 409) {
+        this.error = e?.error?.error || 'Email già registrata.';
+      } else {
+        this.error =
+          e?.error?.error || e?.error?.message || 'Registrazione fallita';
+      }
     } finally {
       this.loading = false;
     }

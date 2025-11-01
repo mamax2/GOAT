@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -6,13 +6,10 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar,
   IonItem,
   IonInput,
-  IonButton,
   IonList,
   IonLabel,
-  IonButtons,
   IonChip,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/core/services/auth-service';
@@ -26,13 +23,11 @@ import { AuthService } from 'src/app/core/services/auth-service';
     IonContent,
     IonHeader,
     IonTitle,
-    IonToolbar,
     IonItem,
     IonInput,
-    IonButton,
+
     IonList,
     IonLabel,
-    IonButtons,
   ],
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
@@ -44,12 +39,35 @@ export class LoginPage {
   email = '';
   pass = '';
 
+  loading = signal(false);
+  errorMsg = signal<string | null>(null);
+
   async doLogin() {
-    await this.auth.login(this.email, this.pass);
-    this.router.navigateByUrl('/home');
+    this.errorMsg.set(null);
+
+    if (!this.email || !this.pass) {
+      this.errorMsg.set('Inserisci email e password.');
+      return;
+    }
+
+    this.loading.set(true);
+    try {
+      await this.auth.login(this.email.trim().toLowerCase(), this.pass);
+
+      await this.router.navigateByUrl('/home');
+    } catch (err: any) {
+      const msg =
+        err?.error?.error ||
+        err?.error?.message ||
+        err?.message ||
+        'Login fallito. Riprova.';
+      this.errorMsg.set(msg);
+    } finally {
+      this.loading.set(false);
+    }
   }
 
-  async doSignup() {
+  goToSignup() {
     this.router.navigateByUrl('/signup');
   }
 }

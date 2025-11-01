@@ -35,19 +35,16 @@
       ></ion-input>
     </ion-item>
 
+    @if (error.length!=0) {
+    <div class="error">{{ error }}</div>
+    }
+
     <div class="buttons">
-      <ion-chip
-        class="chip-peach"
-        (click)="doSignup()"
-        [disabled]="loading"
-      >
+      <ion-chip class="chip-peach" (click)="doSignup()" [disabled]="loading">
         <ion-label>{{ loading ? 'Attendi…' : 'Crea account' }}</ion-label>
       </ion-chip>
 
-      <ion-chip
-        class="chip-peach-outline"
-        (click)="goLogin()"
-      >
+      <ion-chip class="chip-peach-outline" (click)="goLogin()">
         <ion-label>Hai già un account? Login</ion-label>
       </ion-chip>
     </div>

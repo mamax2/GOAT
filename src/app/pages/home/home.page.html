@@ -1,7 +1,9 @@
 <ion-header class="hero-header">
   <div class="hero peach-gradient">
     <h1>Benvenut@ in <strong>GOAT</strong></h1>
-    <img src="assets/logo-goat.png" alt="GOAT" class="hero-logo" />
+    <a (click)="goToProfile()"
+      ><img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo"
+    /></a>
   </div>
 
   <div class="tabs">
@@ -14,6 +16,17 @@
     <ion-button fill="outline" size="small" class="filter-btn">
       <ion-icon name="filter-outline"></ion-icon>
       Filtri
+    </ion-button>
+
+    <!-- 🔹 Bottone logout -->
+    <ion-button
+      fill="clear"
+      size="small"
+      class="logout-btn"
+      color="danger"
+      (click)="doLogout()"
+    >
+      exit
     </ion-button>
   </div>
 </ion-header>
@@ -39,9 +52,9 @@
 
       <div class="card-footer">
         <div class="info">2h • 5 posti • 50 credits</div>
-        <ion-button size="small" color="primary" class="proponiti"
-          >Proponiti</ion-button
-        >
+        <ion-button size="small" color="primary" class="proponiti">
+          Proponiti
+        </ion-button>
       </div>
     </ion-card>
   </ion-list>
