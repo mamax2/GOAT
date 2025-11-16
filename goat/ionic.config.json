@@ -1,0 +1,7 @@
+{
+  "name": "goat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

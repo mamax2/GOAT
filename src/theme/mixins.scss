@@ -1,38 +1,44 @@
-/* ---------- Palette & helpers ---------- */
-$peach-900: #7a4a43;
-$peach-800: #a15e54;
-$peach-700: #f07f6f;
-$peach-600: #ff9e8f;
-$peach-500: #ffb3a7; // base
-$peach-400: #ffc2b9;
-$peach-300: #ffd1c9;
-$peach-200: #ffe3de;
-$peach-100: #fff0eb;
+/* =========================================================
+   PALETTE & HELPERS — Mustard / Warm theme
+   ========================================================= */
+
+/* ---------- Palette ---------- */
+$mustard-900: #5f4500;
+$mustard-800: #8b6800;
+$mustard-700: #c38b00;
+$mustard-600: #d39a00;
+$mustard-500: #e1ad01; // base
+$mustard-400: #edc127;
+$mustard-300: #f2ce5b;
+$mustard-200: #ffe89a;
+$mustard-100: #fff7d8;
 
 $ink: #231916; // text
-$shell: #fff7f4; // app bg
+$shell: #fffdf5; // app bg
 $clay: #e9d8d3; // soft border
 
-$peach-scale: (
-  100: $peach-100,
-  200: $peach-200,
-  300: $peach-300,
-  400: $peach-400,
-  500: $peach-500,
-  600: $peach-600,
-  700: $peach-700,
-  800: $peach-800,
-  900: $peach-900,
+$mustard-scale: (
+  100: $mustard-100,
+  200: $mustard-200,
+  300: $mustard-300,
+  400: $mustard-400,
+  500: $mustard-500,
+  600: $mustard-600,
+  700: $mustard-700,
+  800: $mustard-800,
+  900: $mustard-900,
 );
 
-@function peach($step: 500) {
-  @return map-get($peach-scale, $step);
+@function mustard($step: 500) {
+  @return map-get($mustard-scale, $step);
 }
 @function rgba-($hex, $a) {
   @return rgba(red($hex), green($hex), blue($hex), $a);
 }
 
-/* ---------- Layout / elev / utils ---------- */
+/* =========================================================
+   Layout / Elevation / Utils
+   ========================================================= */
 @mixin container($max: 1000px, $pad: 16px) {
   max-width: $max;
   margin-inline: auto;
@@ -43,7 +49,6 @@ $peach-scale: (
   grid-template-columns: repeat($cols, minmax(0, 1fr));
   gap: $gap;
 }
-
 @mixin elev-soft {
   box-shadow: 0 6px 20px rgba-(#000, 0.07);
 }
@@ -52,17 +57,18 @@ $peach-scale: (
 }
 @mixin focus-ring($tone: 300) {
   &:focus-visible {
-    outline: 3px solid peach($tone);
+    outline: 3px solid mustard($tone);
     outline-offset: 2px;
   }
 }
-
-@mixin peach-surface($tone: 100) {
-  background: peach($tone);
+@mixin mustard-surface($tone: 100) {
+  background: mustard($tone);
   border: 1px solid $clay;
 }
 
-/* ---------- Typography ---------- */
+/* =========================================================
+   Typography
+   ========================================================= */
 @mixin h1() {
   font-family: var(--font-headings, var(--font-sans));
   font-weight: 700;
@@ -83,17 +89,19 @@ $peach-scale: (
   color: $ink;
 }
 
-/* ---------- Gradient ---------- */
-@mixin peach-gradient($from: 500, $to: 300, $angle: 135deg) {
-  background: linear-gradient($angle, peach($from) 0%, peach($to) 100%);
+/* =========================================================
+   Gradient
+   ========================================================= */
+@mixin mustard-gradient($from: 500, $to: 300, $angle: 135deg) {
+  background: linear-gradient($angle, mustard($from) 0%, mustard($to) 100%);
   color: $ink;
 }
 
 /* =========================================================
-   Components (Ionic-friendly: usabili su ion-* o HTML)
+   Components (Ionic-friendly)
    ========================================================= */
 
-/* ---------- Toolbar ---------- */
+/* Toolbar */
 @mixin toolbar($bg: $shell, $color: $ink) {
   --background: #{$bg};
   --color: #{$color};
@@ -104,9 +112,9 @@ $peach-scale: (
   }
 }
 
-/* ---------- Card ---------- */
+/* Card */
 @mixin card($tone: 100, $radius: 16px) {
-  --background: #{peach($tone)};
+  --background: #{mustard($tone)};
   border: 1px solid $clay;
   border-radius: $radius;
   @include elev-soft;
@@ -116,18 +124,18 @@ $peach-scale: (
   }
 }
 
-/* ---------- List & Item ---------- */
+/* List & Item */
 @mixin list() {
   background: transparent;
 }
 @mixin item($tone: 100) {
-  --background: #{peach($tone)};
+  --background: #{mustard($tone)};
   border: 1px solid $clay;
   border-radius: 12px;
   padding: 4px 8px;
 }
 
-/* ---------- Input / Textarea / Select ---------- */
+/* Input / Textarea / Select */
 @mixin input($radius: 12px) {
   --background: #fff;
   --color: #{$ink};
@@ -137,8 +145,8 @@ $peach-scale: (
   border-radius: $radius;
   border: 1px solid $clay;
   &:focus-within {
-    border-color: peach(400);
-    box-shadow: 0 0 0 3px rgba-(peach(300), 0.55);
+    border-color: mustard(400);
+    box-shadow: 0 0 0 3px rgba-(mustard(300), 0.55);
   }
   &::part(native) {
     font-weight: 500;
@@ -153,38 +161,38 @@ $peach-scale: (
   border: 1px solid $clay;
   border-radius: 12px;
   &:focus-within {
-    border-color: peach(400);
-    box-shadow: 0 0 0 3px rgba-(peach(300), 0.5);
+    border-color: mustard(400);
+    box-shadow: 0 0 0 3px rgba-(mustard(300), 0.5);
   }
 }
 
-/* ---------- Chip / Badge ---------- */
+/* Chip / Badge */
 @mixin chip($tone: 200) {
-  --background: #{peach($tone)};
+  --background: #{mustard($tone)};
   --color: #{$ink};
   border-radius: 999px;
   padding-inline: 8px;
 }
 @mixin badge($tone: 500) {
-  --background: #{peach($tone)};
+  --background: #{mustard($tone)};
   --color: #{$ink};
   border-radius: 10px;
 }
 
-/* ---------- Tabs / Segment ---------- */
+/* Tabs / Segment */
 @mixin tabs() {
   ion-tab-bar {
     --background: #fff;
     border-top: 1px solid $clay;
     ion-tab-button {
       --color: #8b6f69;
-      --color-selected: #{peach(700)};
+      --color-selected: #{mustard(700)};
     }
   }
 }
 @mixin segment() {
   ion-segment {
-    --background: #{peach(200)};
+    --background: #{mustard(200)};
     border-radius: 12px;
     padding: 4px;
     ion-segment-button {
@@ -194,21 +202,21 @@ $peach-scale: (
       border-radius: 10px;
       border: 1px solid transparent;
       &.segment-button-checked {
-        border-color: peach(400);
+        border-color: mustard(400);
         @include elev-soft;
       }
     }
   }
 }
 
-/* ---------- FAB ---------- */
+/* FAB */
 @mixin fab($tone: 500) {
-  --background: #{peach($tone)};
+  --background: #{mustard($tone)};
   --color: #{$ink};
   @include elev-strong;
 }
 
-/* ---------- Modal ---------- */
+/* Modal */
 @mixin modal() {
   ion-modal {
     --background: #{$shell};
@@ -217,10 +225,10 @@ $peach-scale: (
   }
 }
 
-/* ---------- Toast & Alert ---------- */
+/* Toast & Alert */
 @mixin toast($tone: 500) {
   ion-toast {
-    --background: #{peach($tone)};
+    --background: #{mustard($tone)};
     --color: #{$ink};
     --border-radius: 12px;
     --box-shadow: 0 10px 32px rgba-(#000, 0.16);
@@ -235,21 +243,21 @@ $peach-scale: (
       font-weight: 700;
     }
     .alert-button {
-      color: #{peach(700)};
+      color: #{mustard(700)};
     }
   }
 }
 
-/* ---------- Skeleton ---------- */
+/* Skeleton */
 @mixin skeleton() {
   ion-skeleton-text {
-    --background: #{peach(200)};
-    --background-rgb: 255, 227, 222;
+    --background: #{mustard(200)};
+    --background-rgb: 255, 232, 154;
   }
 }
 
 /* =========================================================
-   Buttons (filled / outline / ghost / gradient)
+   BUTTONS (filled / outline / clear / gradient)
    ========================================================= */
 @mixin btn-base($radius: 14px, $pad-y: 0.6rem, $pad-x: 1.2rem) {
   display: inline-flex;
@@ -269,10 +277,11 @@ $peach-scale: (
   }
 }
 
+/* Ionic bridge mixins */
 @mixin ion-btn-filled($tone: 500) {
-  --background: #{peach($tone)};
-  --background-hover: #{peach($tone - 100)};
-  --background-activated: #{peach($tone + 100)};
+  --background: #{mustard($tone)};
+  --background-hover: #{mustard($tone - 100)};
+  --background-activated: #{mustard($tone + 100)};
   --color: #{$ink};
   --border-radius: 14px;
   --padding-start: 14px;
@@ -285,18 +294,18 @@ $peach-scale: (
   }
 }
 
-/* outline */
+/* Outline */
 @mixin ion-btn-outline($tone: 600) {
   --background: white;
-  --color: #{peach($tone)};
-  --border-color: #{peach($tone)};
+  --color: #{mustard($tone)};
+  --border-color: #{mustard($tone)};
   --border-width: 1.5px;
   --border-style: solid;
   --border-radius: 14px;
   --padding-start: 14px;
   --padding-end: 14px;
-  --background-hover: rgba-(peach($tone), 0.12);
-  --background-activated: rgba-(peach($tone), 0.18);
+  --background-hover: rgba-(mustard($tone), 0.12);
+  --background-activated: rgba-(mustard($tone), 0.18);
   &::part(native) {
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -304,10 +313,10 @@ $peach-scale: (
   }
 }
 
-/* clear/ghost */
+/* Clear / ghost */
 @mixin ion-btn-clear($tone: 700) {
   --background: transparent;
-  --color: #{peach($tone)};
+  --color: #{mustard($tone)};
   --padding-start: 14px;
   --padding-end: 14px;
   &::part(native) {
@@ -317,9 +326,10 @@ $peach-scale: (
   }
 }
 
+/* Gradient version */
 @mixin btn-gradient($from: 500, $to: 300) {
   @include btn-base();
-  background: linear-gradient(135deg, peach($from) 0%, peach($to) 100%);
+  background: linear-gradient(135deg, mustard($from) 0%, mustard($to) 100%);
   color: $ink;
   border: none;
   box-shadow: 0 8px 24px rgba-(#000, 0.12);
@@ -327,7 +337,8 @@ $peach-scale: (
     filter: brightness(1.05);
   }
 }
-/* size/shape */
+
+/* Sizes */
 @mixin btn-sm() {
   @include btn-base($radius: 10px, $pad-y: 0.35rem, $pad-x: 0.8rem);
   font-size: 0.85rem;

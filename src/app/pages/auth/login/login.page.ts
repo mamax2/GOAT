@@ -11,6 +11,8 @@ import {
   IonList,
   IonLabel,
   IonChip,
+  IonIcon,
+  IonButton,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/core/services/auth-service';
 
@@ -18,6 +20,8 @@ import { AuthService } from 'src/app/core/services/auth-service';
   standalone: true,
   selector: 'app-login',
   imports: [
+    IonButton,
+    IonIcon,
     IonChip,
     FormsModule,
     IonContent,

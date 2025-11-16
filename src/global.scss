@@ -1,12 +1,6 @@
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
 /* Core CSS required for Ionic components to work properly */
@@ -18,53 +12,47 @@
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Optional CSS utils */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* Dark mode system */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* =========================================
-   GLOBAL THEME — Peach / Soft Warm
+   GLOBAL THEME — Mustard / Warm
    ========================================= */
 
 /* ---------- Base palette ---------- */
 :root {
-  /* Peach core */
-  --peach: #ffb3a7; /* base pesca */
-  --peach-600: #ff9e8f; /* -1 step */
-  --peach-700: #f07f6f; /* -2 step */
-  --peach-300: #ffd1c9; /* +1 step */
-  --peach-200: #ffe3de; /* +2 step */
+  /* Mustard scale */
+  --mustard: #e1ad01; /* base */
+  --mustard-700: #c38b00; /* darker */
+  --mustard-600: #d39a00;
+  --mustard-300: #f2ce5b;
+  --mustard-200: #ffe89a;
+  --mustard-contrast: #1e1600; /* text on mustard */
 
-  /* Accents & neutrals caldi */
-  --rose: #e06a7c; /* accento rosa/rosso tenue */
-  --apricot: #ffc48f; /* accento aranciato */
-  --ink: #231916; /* testo principale */
-  --ink-2: #3b2b27; /* testo secondario */
-  --shell: #fff7f4; /* sfondo chiaro */
-  --clay: #e9d8d3; /* bordo/surface outline */
+  /* Warm accents & neutrals */
+  --rose: #e06a7c;
+  --apricot: #ffc48f;
+
+  --ink: #231916; /* main text */
+  --ink-2: #3b2b27; /* secondary text */
+  --shell: #fcfbf6; /* app background */
+  --clay: #e9d8d3; /* soft border */
 
   /* ---------- Ionic Required Color Vars ---------- */
-  /* PRIMARY = peach */
-  --ion-color-primary: var(--peach);
-  --ion-color-primary-rgb: 255, 179, 167;
-  --ion-color-primary-contrast: #241815;
-  --ion-color-primary-contrast-rgb: 36, 24, 21;
-  --ion-color-primary-shade: var(--peach-600);
-  --ion-color-primary-tint: var(--peach-300);
+  /* PRIMARY = mustard */
+  --ion-color-primary: var(--mustard);
+  --ion-color-primary-rgb: 225, 173, 1;
+  --ion-color-primary-contrast: var(--mustard-contrast);
+  --ion-color-primary-contrast-rgb: 30, 22, 0;
+  --ion-color-primary-shade: var(--mustard-600);
+  --ion-color-primary-tint: var(--mustard-300);
 
   /* SECONDARY = apricot */
   --ion-color-secondary: var(--apricot);
@@ -104,7 +92,7 @@
 
   /* Surfaces */
   --surface: #fffdfa;
-  --surface-elev: #fff3ef;
+  --surface-elev: #fff7e7;
   --surface-border: var(--clay);
 
   /* Radius & shadows */
@@ -119,34 +107,6 @@
   --font-weight-heading: 700;
   --font-weight-body: 450;
 }
-
-/* ---------- Dark Mode ---------- */
-/*@media (prefers-color-scheme: dark) {
-  :root {
-    --ion-background-color: #171212;
-    --ion-background-color-rgb: 23, 18, 18;
-    --ion-text-color: #f7ece9;
-
-    --surface: #1d1717;
-    --surface-elev: #241c1c;
-    --surface-border: #352828;
-
-    /* Peach attenuato per dark */ /*
-    --ion-color-primary: #ffab9e;
-    --ion-color-primary-contrast: #0b0909;
-    --ion-color-primary-shade: #e59589;
-    --ion-color-primary-tint: #ffc6bd;
-
-    --ion-color-secondary: #ffcf9e;
-    --ion-color-tertiary: #f08293;
-
-    --ion-color-medium: #b9a7a3;
-    --ion-color-light: #211a1a;
-    --ion-color-light-contrast: #f7ece9;
-    --ion-color-dark: #f7ece9;
-    --ion-color-dark-contrast: #0b0909;
-  }
-}*/
 
 /* ---------- Resets ---------- */
 * {
@@ -176,36 +136,39 @@ ion-card {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-soft);
 }
-
 ion-chip {
   border-radius: 999px;
 }
 
-/* ---------- Buttons ---------- */
-ion-button.btn-peach {
+/* =========================================
+   BUTTONS (Mustard)
+   ========================================= */
+
+/* SOLID  */
+ion-button.btn-mustard {
   --background: linear-gradient(
     135deg,
-    var(--peach-700) 0%,
-    var(--peach) 60%,
-    var(--peach-300) 100%
+    var(--mustard-700) 0%,
+    var(--mustard) 60%,
+    var(--mustard-300) 100%
   );
   --background-hover: linear-gradient(
     135deg,
-    var(--peach-700) 0%,
-    var(--peach-300) 100%
+    var(--mustard-700) 0%,
+    var(--mustard-300) 100%
   );
   --background-activated: linear-gradient(
     135deg,
-    var(--peach-700) 0%,
-    var(--peach-600) 100%
+    var(--mustard-700) 0%,
+    var(--mustard-600) 100%
   );
-  --color: #fffdfa;
+  --color: var(--mustard-contrast);
   --border-radius: 999px;
   --padding-start: 28px;
   --padding-end: 28px;
   --padding-top: 12px;
   --padding-bottom: 12px;
-  --box-shadow: 0 12px 26px rgba(240, 127, 111, 0.28);
+  --box-shadow: 0 12px 26px rgba(211, 154, 0, 0.28);
 
   &::part(native) {
     font-weight: 600;
@@ -214,12 +177,13 @@ ion-button.btn-peach {
   }
 }
 
-ion-button.btn-peach-outline,
-ion-button.btn-peach-outline[fill="outline"],
-ion-button.btn-peach-outline.button-outline {
+/* OUTLINE */
+ion-button.btn-mustard-outline,
+ion-button.btn-mustard-outline[fill="outline"],
+ion-button.btn-mustard-outline.button-outline {
   --background: transparent;
-  --color: var(--rose);
-  --border-color: var(--rose);
+  --color: var(--mustard-700);
+  --border-color: var(--mustard-700);
   --border-width: 2px;
   --border-style: solid;
   --border-radius: 999px;
@@ -227,9 +191,9 @@ ion-button.btn-peach-outline.button-outline {
   --padding-end: 28px;
   --padding-top: 12px;
   --padding-bottom: 12px;
-  --background-hover: rgba(224, 106, 124, 0.12);
-  --background-activated: rgba(224, 106, 124, 0.18);
-  --box-shadow: 0 10px 22px rgba(224, 106, 124, 0.12);
+  --background-hover: rgba(195, 139, 0, 0.12);
+  --background-activated: rgba(195, 139, 0, 0.18);
+  --box-shadow: 0 10px 22px rgba(195, 139, 0, 0.12);
 
   &::part(native) {
     font-weight: 600;
@@ -238,25 +202,36 @@ ion-button.btn-peach-outline.button-outline {
   }
 }
 
-/* ---------- Chips ---------- */
-ion-chip.chip-peach,
-ion-chip.chip-peach-outline {
+/* Disabilitato (opzionale) */
+ion-button[disabled] {
+  --opacity: 0.6;
+  --box-shadow: none;
+  pointer-events: none;
+}
+
+/* =========================================
+   CHIPS (Mustard)
+   ========================================= */
+
+ion-chip.chip-mustard,
+ion-chip.chip-mustard-outline {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 48px;
 }
 
-ion-chip.chip-peach {
+/* Filled */
+ion-chip.chip-mustard {
   border-radius: 999px;
   background: linear-gradient(
     135deg,
-    var(--peach-700) 0%,
-    var(--peach) 60%,
-    var(--peach-300) 100%
+    var(--mustard-700) 0%,
+    var(--mustard) 60%,
+    var(--mustard-300) 100%
   );
-  color: #fffdfa;
-  box-shadow: 0 12px 26px rgba(240, 127, 111, 0.28);
+  color: var(--mustard-contrast);
+  box-shadow: 0 12px 26px rgba(211, 154, 0, 0.28);
   transition: transform 0.15s ease, box-shadow 0.2s ease;
 
   &::part(native) {
@@ -272,12 +247,12 @@ ion-chip.chip-peach {
 
   &:hover:not([disabled]),
   &:focus-visible:not([disabled]) {
-    box-shadow: 0 16px 32px rgba(240, 127, 111, 0.32);
+    box-shadow: 0 16px 32px rgba(211, 154, 0, 0.32);
     transform: translateY(-1px);
   }
 
   &:active:not([disabled]) {
-    box-shadow: 0 8px 20px rgba(240, 127, 111, 0.24);
+    box-shadow: 0 8px 20px rgba(211, 154, 0, 0.24);
     transform: translateY(0);
   }
 
@@ -288,13 +263,15 @@ ion-chip.chip-peach {
   }
 }
 
-ion-chip.chip-peach-outline {
+/* Outline */
+ion-chip.chip-mustard-outline {
   border-radius: 999px;
   background: transparent;
-  color: var(--rose);
-  border: 2px solid var(--rose);
-  box-shadow: 0 10px 22px rgba(224, 106, 124, 0.12);
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  color: var(--mustard-700);
+  border: 2px solid var(--mustard-700);
+  box-shadow: 0 10px 22px rgba(195, 139, 0, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
 
   &::part(native) {
     background: transparent;
@@ -309,24 +286,140 @@ ion-chip.chip-peach-outline {
 
   &:hover,
   &:focus-visible {
-    background: rgba(224, 106, 124, 0.1);
-    box-shadow: 0 12px 26px rgba(224, 106, 124, 0.18);
+    background: rgba(195, 139, 0, 0.1);
+    box-shadow: 0 12px 26px rgba(195, 139, 0, 0.18);
     transform: translateY(-1px);
   }
 
   &:active {
-    background: rgba(224, 106, 124, 0.14);
+    background: rgba(195, 139, 0, 0.14);
     transform: translateY(0);
   }
 }
 
-/* ---------- Utilities ---------- */
-.bg-peach {
-  background: var(--peach) !important;
+ion-accordion {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+ion-accordion [slot="header"] {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+  --border-color: var(--ion-item-border-color);
+  --inner-border-width: 1px;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  --detail-icon-color: currentColor;
+  --detail-icon-opacity: 1;
+}
+ion-accordion [slot="content"] {
+  background: var(--ion-background-color);
+  color: var(--ion-text-color);
+  padding: 16px;
+}
+
+/* Gruppo con gap  */
+ion-accordion-group.acc-rounded {
+  display: grid;
+  gap: 12px;
+}
+
+/* ===== FILLED ===== */
+ion-accordion.acc-primary {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden; /* taglia gli angoli interni */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background: color-mix(in srgb, var(--ion-color-primary) 14%, #fff);
+
+  /* HEADER: togli bordo/radius del ion-item */
+  [slot="header"] {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    --min-height: 56px;
+    --padding-start: 16px;
+    --padding-end: 12px;
+    --inner-padding-end: 12px;
+
+    /* ← questi 3 eliminano il “cartellino” */
+    --border-color: transparent;
+    --inner-border-width: 0; /* toglie la riga interna */
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  [slot="content"] {
+    background: color-mix(in srgb, var(--ion-color-primary) 10%, #fff);
+    color: var(--ion-text-color);
+    padding: 14px 16px 16px;
+  }
+}
+
+/* ===== OUTLINE ===== */
+ion-accordion.acc-primary-outline {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid var(--ion-color-primary);
+  background: #fff;
+
+  [slot="header"] {
+    --background: transparent;
+    --color: var(--ion-color-primary);
+    --min-height: 56px;
+    --padding-start: 16px;
+    --padding-end: 12px;
+    --inner-padding-end: 12px;
+
+    /* niente bordo/radius sul ion-item header */
+    --border-color: transparent;
+    --inner-border-width: 0;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  [slot="content"] {
+    background: color-mix(in srgb, var(--ion-color-primary) 6%, #fff);
+    color: var(--ion-text-color);
+    padding: 14px 16px 16px;
+  }
+}
+
+/* Stato: hover / expanded (facoltativo) */
+ion-accordion.acc-primary:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+ion-accordion.acc-primary[expanded] {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+ion-accordion.acc-primary-outline:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+ion-accordion.acc-primary-outline[expanded] {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Focus accessibile sul container */
+ion-accordion.acc-primary:focus-within,
+ion-accordion.acc-primary-outline:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--ion-color-primary) 28%, #fff);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   Utilities
+   ========================================= */
+.bg-primary {
+  background: var(--ion-color-primary) !important;
   color: var(--ion-color-primary-contrast) !important;
 }
-.text-peach {
-  color: var(--peach) !important;
+.text-primary {
+  color: var(--ion-color-primary) !important;
 }
 .border-soft {
   border: 1px solid var(--surface-border);
@@ -339,18 +432,18 @@ ion-chip.chip-peach-outline {
   border-radius: var(--radius-xl);
 }
 
-.peach-gradient {
+.mustard-gradient {
   background: linear-gradient(
     135deg,
-    var(--peach) 0%,
-    var(--peach-300) 45%,
-    #fff0eb 100%
+    var(--mustard) 0%,
+    var(--mustard-300) 45%,
+    #fff9df 100%
   );
   color: #201615;
 }
 
 /* Accessibilità focus */
 :focus-visible {
-  outline: 3px solid var(--peach-300);
+  outline: 3px solid var(--mustard-200);
   outline-offset: 2px;
 }

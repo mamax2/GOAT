@@ -1,4 +1,10 @@
-<ion-header><div class="goat">🐐</div></ion-header>
+<ion-header class="hero-header">
+  <div class="hero mustard-gradient">
+    <a
+      ><img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo"
+    /></a>
+  </div>
+</ion-header>
 
 <ion-content class="ion-padding">
   <ion-list>
@@ -40,11 +46,13 @@
     }
 
     <div class="buttons">
-      <ion-chip class="chip-peach" (click)="doSignup()" [disabled]="loading">
-        <ion-label>{{ loading ? 'Attendi…' : 'Crea account' }}</ion-label>
+      <ion-chip class="chip-mustard" (click)="doSignup()" [disabled]="loading">
+        <ion-label style="color: white"
+          >{{ loading ? 'Attendi…' : 'Crea account' }}</ion-label
+        >
       </ion-chip>
 
-      <ion-chip class="chip-peach-outline" (click)="goLogin()">
+      <ion-chip class="chip-mustard-outline" (click)="goLogin()">
         <ion-label>Hai già un account? Login</ion-label>
       </ion-chip>
     </div>

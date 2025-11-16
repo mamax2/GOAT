@@ -1,14 +1,74 @@
-ion-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 10vh;
+.hero-header {
+  background: transparent;
+  box-shadow: none;
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px 24px;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 
-  background-color: var(--ion-color-primary);
-  .goat {
-    font-size: 40px;
-    margin-left: auto;
-    margin-right: auto;
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    background: var(--ion-background-color);
+    padding-top: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 6px 0;
+    font-weight: 600;
+    color: #777;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .tab.active {
+    color: #000;
+  }
+
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    bottom: 0;
+    height: 2px;
+    background: var(--ion-color-primary);
+  }
+
+  .filters {
+    display: flex;
+    justify-content: flex-start;
+    padding: 12px 20px;
+    background: var(--ion-background-color);
+  }
+
+  .filter-btn {
+    --border-color: #ccc;
+    --color: #333;
+    --border-radius: 999px;
+    --padding-start: 10px;
+    --padding-end: 10px;
   }
 }
 ion-content {
@@ -17,7 +77,7 @@ ion-content {
 
   .header,
   ion-label {
-    color: var(--ion-color-tertiary);
+    color: var(--ion-color-primary);
     font-weight: bold;
   }
 
