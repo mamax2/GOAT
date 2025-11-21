@@ -1,86 +1,280 @@
 .hero-header {
   background: transparent;
   box-shadow: none;
-  a {
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    float: left;
-  }
-  .hero {
+
+  .hero-profile {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: left;
-    gap: 25vw;
-    padding: 32px 20px 24px;
-    color: white;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    gap: 27%;
+    padding: 28px 20px 34px;
   }
 
-  h1 {
-    font-size: 1.5rem;
+  .back-btn {
+    color: white;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: 1.4rem;
     font-weight: 800;
     margin: 0;
-  }
-
-  .hero-logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid white;
-    object-fit: cover;
-  }
-
-  .tabs {
-    display: flex;
-    justify-content: space-around;
-    background: var(--ion-background-color);
-    padding-top: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .tab {
-    flex: 1;
-    text-align: center;
-    padding: 6px 0;
-    font-weight: 600;
-    color: #777;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .tab.active {
-    color: #000;
-  }
-
-  .tab.active::after {
-    content: "";
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    bottom: 0;
-    height: 2px;
-    background: var(--ion-color-primary);
-  }
-
-  .filters {
-    display: flex;
-    justify-content: flex-start;
-    padding: 12px 20px;
-    background: var(--ion-background-color);
-  }
-
-  .filter-btn {
-    --border-color: #ccc;
-    --color: #333;
-    --border-radius: 999px;
-    --padding-start: 10px;
-    --padding-end: 10px;
+    color: white;
   }
 }
 
-ion-accordion {
-  width: 100%;
+.page {
+  --background: var(--ion-color-light);
+}
+
+.profile-wrapper {
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 1;
+  transform: none;
+}
+
+.profile-card {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 10px;
+  background: var(--surface);
+
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #777;
+  }
+}
+
+.profile-main-card {
+  padding: 12px 16px 16px;
+}
+
+.user-block {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  .avatar-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+
+    .avatar-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid var(--mustard);
+      box-shadow: 0 10px 20px rgba(225, 173, 1, 0.25);
+    }
+
+    .avatar-img {
+      width: 84px;
+      height: 84px;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .badge-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      width: 42%;
+      background: rgba(225, 173, 1, 0.13);
+      text-align: center;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mustard);
+    }
+
+    .badge-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--mustard-700);
+    }
+
+    /* TAG ROW */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+
+      ion-chip {
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.stats-title {
+  font-weight: bold;
+  font-size: 23px;
+  text-align: center;
+  color: var(--mustard);
+}
+
+.stats-card {
+  padding-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px;
+}
+
+.stat-box {
+  background: var(--surface-elev);
+  border-radius: var(--radius-lg);
+  padding: 10px 8px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+
+  h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ion-text-color);
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+
+  li {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+  }
+}
+
+.small-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  button {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.goat-accordion {
+  border: 1.5px solid var(--mustard-700);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fffdfa;
+  margin-bottom: 12px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  .goat-acc-header {
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--mustard-700);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--mustard-200) 0%, #fff9df 100%);
+  }
+
+  .chevron {
+    transition: transform 0.25s ease;
+    .open {
+      transform: rotate(180deg);
+    }
+  }
+
+  .goat-acc-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s ease, opacity 0.25s ease;
+    padding: 0 18px;
+    opacity: 0;
+  }
+
+  .goat-acc-content.open {
+    max-height: 600px;
+    padding: 14px 18px 16px;
+    opacity: 1;
+  }
+}
+
+.hover-pop {
+  transition: transform 0.15s ease, box-shadow 0.18s ease;
+}
+
+.hover-pop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(35, 25, 22, 0.12);
+}
+
+@media (min-width: 768px) {
+  .profile-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .hero-profile {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-wrapper {
+    max-width: 720px;
+  }
 }

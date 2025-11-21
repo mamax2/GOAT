@@ -1,28 +1,133 @@
 <ion-header class="hero-header">
-  <div class="hero mustard-gradient">
-    <a (click)="goToHome()">&#8592;</a>
-    <h1>Profilo <strong>GOAT</strong></h1>
+  <div class="hero mustard-gradient hero-profile">
+    <a class="back-btn" (click)="goToHome()">&#8592;</a>
+    <h1 class="hero-title">Profilo <strong>GOAT</strong></h1>
   </div>
 </ion-header>
 
 <ion-content class="ion-padding page">
-  <ion-card>
-    <img
-      alt="Silhouette of mountains"
-      src="https://ionicframework.com/docs/img/demos/card-media.png"
-    />
-    <ion-card-header>
-      <h1>Nome</h1>
-      <p>Ruolo</p>
-    </ion-card-header>
+  <div class="profile-wrapper loaded">
+    <!-- CARD UTENTE -->
+    <ion-card class="profile-card profile-main-card fade-in-up delay-1">
+      <div class="user-block">
+        <div class="avatar-wrapper">
+          <div class="avatar-border"></div>
+          <ion-avatar class="avatar-img">
+            <img src="./assets/images/avatar.png" alt="Avatar" />
+          </ion-avatar>
+        </div>
 
-    <ion-accordion-group class="acc-rounded">
-      <ion-accordion class="acc-primary-outline">
-        <ion-item slot="header" color="warning">
-          <ion-label>GOAT Coins</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">First Content</div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </ion-card>
+        <div class="user-info">
+          <h2>{{ userName }}</h2>
+          <p class="role">{{ userRole }}</p>
+
+          <div class="badge-level">
+            <span class="badge-dot"></span>
+            <span class="badge-text">{{ levelLabel }}</span>
+          </div>
+
+          <div class="tag-row">
+            <ion-chip class="chip-mustard-outline" size="large">
+              <ion-label>Livello {{ level }}</ion-label>
+            </ion-chip>
+
+            <ion-chip class="chip-mustard-outline" size="large">
+              <ion-label>{{ mainSubject }}</ion-label>
+            </ion-chip>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- CARD STATISTICHE -->
+    <ion-card class="profile-card stats-card fade-in-up delay-2">
+      <h2 class="stats-title">Stats</h2>
+
+      <ion-card-content>
+        <div class="stats-grid">
+          <div class="stat-box hover-pop">
+            <h4>{{ goatCoins }}</h4>
+            <p>GOAT Coins</p>
+          </div>
+
+          <div class="stat-box hover-pop">
+            <h4>{{ lessonsAsTutor }}</h4>
+            <p>Lezioni da tutor</p>
+          </div>
+
+          <div class="stat-box hover-pop">
+            <h4>{{ lessonsAsStudent }}</h4>
+            <p>Lezioni seguite</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- CARD GOAT COINS + BONUS -->
+    <ion-card class="profile-card fade-in-up delay-3">
+      <ion-card-header>
+        <h2 class="stats-title">GOAT Coins & Bonus</h2>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- ACCORDION 1 -->
+        <div class="goat-accordion">
+          <div class="goat-acc-header" (click)="acc1 = !acc1">
+            <span>Dettaglio GOAT Coins</span>
+            <span class="chevron" [class.open]="acc1">⌄</span>
+          </div>
+
+          <div class="goat-acc-content" [class.open]="acc1">
+            <ul class="list">
+              <li>Saldo attuale: <strong>{{ goatCoins }}</strong></li>
+              <li>Prossimo livello: <strong>{{ nextLevel }}</strong></li>
+              <li>
+                Conversioni disponibili:
+                <ul>
+                  <li>1h ripetizione personale</li>
+                  <li>1h corso creativo</li>
+                  <li>Buoni sconto partner</li>
+                </ul>
+              </li>
+            </ul>
+
+            <button class="goat-btn">Converti i GOAT Coins</button>
+          </div>
+        </div>
+
+        <!-- ACCORDION 2 -->
+        <div class="goat-accordion">
+          <div class="goat-acc-header" (click)="acc2 = !acc2">
+            <span>Storico attività</span>
+            <span class="chevron" [class.open]="acc2">⌄</span>
+          </div>
+
+          <div class="goat-acc-content" [class.open]="acc2">
+            <p class="small-title">Ultime attività</p>
+            <ul class="list">
+              <li>+5 coins • Tutor Matematica</li>
+              <li>+3 coins • Aiuto compiti ITA</li>
+              <li>-4 coins • Corso “Fumetto base”</li>
+            </ul>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- CARD IMPOSTAZIONI -->
+    <ion-card class="profile-card fade-in-up delay-4">
+      <ion-card-header>
+        <h2 class="stats-title">Impostazioni profilo</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="actions">
+          <button class="goat-btn-outline">Modifica profilo</button>
+          <button class="goat-btn-outline">Preferenze tutor / studente</button>
+          <button class="goat-btn-clear danger" (click)="doLogout()">
+            Esci dall’account
+          </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

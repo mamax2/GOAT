@@ -19,7 +19,6 @@ import {
   IonRouterLinkWithHref,
 } from '@ionic/angular/standalone';
 
-import { ItemsService, Item } from './items.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth-service';
 
@@ -49,40 +48,12 @@ import { AuthService } from 'src/app/core/services/auth-service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage {
-  private itemsSvc = inject(ItemsService);
   private auth = inject(AuthService);
   private router = inject(Router);
 
-  items: Item[] = [];
   title = '';
 
-  constructor(router: Router) {
-    this.refresh();
-  }
-
-  refresh() {
-    this.itemsSvc.list().subscribe((list) => (this.items = list));
-  }
-
-  add() {
-    const t = this.title.trim();
-    if (!t) return;
-    this.itemsSvc.add(t).subscribe(() => {
-      this.title = '';
-      this.refresh();
-    });
-  }
-
-  toggle(it: Item) {
-    if (!it.id) return;
-    const done = it.done ? 0 : 1;
-    this.itemsSvc.update(it.id, { done }).subscribe(() => this.refresh());
-  }
-
-  remove(it: Item) {
-    if (!it.id) return;
-    this.itemsSvc.remove(it.id).subscribe(() => this.refresh());
-  }
+  constructor(router: Router) {}
 
   async doLogout() {
     try {

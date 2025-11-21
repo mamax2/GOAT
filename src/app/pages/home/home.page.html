@@ -11,54 +11,9 @@
     <div class="tab">Offerte</div>
     <div class="tab">Last minute</div>
   </div>
-
-  <div class="filters">
-    <ion-button fill="outline" size="small" class="filter-btn">
-      <ion-icon name="filter-outline"></ion-icon>
-      Filtri
-    </ion-button>
-
-    <!-- 🔹 Bottone logout -->
-    <ion-button
-      fill="clear"
-      size="small"
-      class="logout-btn"
-      color="danger"
-      (click)="doLogout()"
-    >
-      exit
-    </ion-button>
-  </div>
 </ion-header>
 
-<ion-content class="ion-padding page">
-  <ion-list lines="none" class="card-list">
-    <ion-card *ngFor="let it of items" class="request-card">
-      <div class="card-header">
-        <h2>{{ it.title }}</h2>
-        <ion-icon name="school-outline"></ion-icon>
-      </div>
-
-      <div class="card-meta">
-        scuola • superiori • matematica • principiante
-      </div>
-
-      <p class="card-desc">
-        {{ it.description || 'RichText allows for various styles and features to
-        be customized within one set of text, such as' }}
-      </p>
-
-      <div class="divider"></div>
-
-      <div class="card-footer">
-        <div class="info">2h • 5 posti • 50 credits</div>
-        <ion-button size="small" color="primary" class="proponiti">
-          Proponiti
-        </ion-button>
-      </div>
-    </ion-card>
-  </ion-list>
-</ion-content>
+<ion-content class="ion-padding page"> </ion-content>
 
 <ion-footer class="bottom-nav">
   <ion-tab-bar>

@@ -297,118 +297,118 @@ ion-chip.chip-mustard-outline {
   }
 }
 
-ion-accordion {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
-}
-ion-accordion [slot="header"] {
-  --background: var(--ion-background-color);
-  --color: var(--ion-text-color);
-  --border-color: var(--ion-item-border-color);
-  --inner-border-width: 1px;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-  --detail-icon-color: currentColor;
-  --detail-icon-opacity: 1;
-}
-ion-accordion [slot="content"] {
-  background: var(--ion-background-color);
-  color: var(--ion-text-color);
-  padding: 16px;
-}
+/* =========================================
+   GOAT BUTTONS HTML
+   ========================================= */
 
-/* Gruppo con gap  */
-ion-accordion-group.acc-rounded {
-  display: grid;
-  gap: 12px;
-}
+.goat-btn {
+  width: 100%;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--mustard-700) 0%,
+    var(--mustard) 50%,
+    var(--mustard-300) 100%
+  );
+  color: var(--mustard-contrast);
+  box-shadow: 0 12px 24px rgba(211, 154, 0, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 
-/* ===== FILLED ===== */
-ion-accordion.acc-primary {
-  display: block;
-  border-radius: 16px;
-  overflow: hidden; /* taglia gli angoli interni */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  background: color-mix(in srgb, var(--ion-color-primary) 14%, #fff);
-
-  /* HEADER: togli bordo/radius del ion-item */
-  [slot="header"] {
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-primary-contrast);
-    --min-height: 56px;
-    --padding-start: 16px;
-    --padding-end: 12px;
-    --inner-padding-end: 12px;
-
-    /* ← questi 3 eliminano il “cartellino” */
-    --border-color: transparent;
-    --inner-border-width: 0; /* toglie la riga interna */
-    border: 0;
-    box-shadow: none;
-    border-radius: 0;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(211, 154, 0, 0.32);
   }
 
-  [slot="content"] {
-    background: color-mix(in srgb, var(--ion-color-primary) 10%, #fff);
-    color: var(--ion-text-color);
-    padding: 14px 16px 16px;
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 20px rgba(211, 154, 0, 0.24);
   }
 }
 
-/* ===== OUTLINE ===== */
-ion-accordion.acc-primary-outline {
-  display: block;
-  border-radius: 16px;
+.goat-btn-outline {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid var(--mustard-700);
+  background: transparent;
+  color: var(--mustard-700);
+  transition: background 0.2s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    background: rgba(195, 139, 0, 0.1);
+    box-shadow: 0 12px 26px rgba(195, 139, 0, 0.18);
+  }
+}
+
+.goat-btn-clear {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--ion-color-medium);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+}
+
+.goat-btn-clear.danger {
+  color: var(--ion-color-danger);
+}
+
+/* =========================================
+   GOAT ACCORDION HTML
+   ========================================= */
+
+.goat-accordion {
+  border: 1.5px solid var(--mustard-700);
+  border-radius: 18px;
   overflow: hidden;
-  border: 1.5px solid var(--ion-color-primary);
-  background: #fff;
-
-  [slot="header"] {
-    --background: transparent;
-    --color: var(--ion-color-primary);
-    --min-height: 56px;
-    --padding-start: 16px;
-    --padding-end: 12px;
-    --inner-padding-end: 12px;
-
-    /* niente bordo/radius sul ion-item header */
-    --border-color: transparent;
-    --inner-border-width: 0;
-    border: 0;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  [slot="content"] {
-    background: color-mix(in srgb, var(--ion-color-primary) 6%, #fff);
-    color: var(--ion-text-color);
-    padding: 14px 16px 16px;
-  }
+  background: #fffdfa;
+  margin-bottom: 12px;
 }
 
-/* Stato: hover / expanded (facoltativo) */
-ion-accordion.acc-primary:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-ion-accordion.acc-primary[expanded] {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
-}
-
-ion-accordion.acc-primary-outline:hover {
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-}
-ion-accordion.acc-primary-outline[expanded] {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+.goat-acc-header {
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--mustard-700);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--mustard-200) 0%, #fff9df 100%);
 }
 
-/* Focus accessibile sul container */
-ion-accordion.acc-primary:focus-within,
-ion-accordion.acc-primary-outline:focus-within {
-  outline: 3px solid color-mix(in srgb, var(--ion-color-primary) 28%, #fff);
-  outline-offset: 2px;
+.chevron {
+  transition: transform 0.25s ease;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.goat-acc-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s ease;
+  padding: 0 18px;
+  opacity: 0;
+}
+
+.goat-acc-content.open {
+  max-height: 600px;
+  padding: 14px 18px 16px;
+  opacity: 1;
 }
 
 /* =========================================
