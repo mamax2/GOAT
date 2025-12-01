@@ -13,7 +13,7 @@
         <div class="avatar-wrapper">
           <div class="avatar-border"></div>
           <ion-avatar class="avatar-img">
-            <img src="./assets/images/avatar.png" alt="Avatar" />
+            <img src="{{avatarUrl}}" alt="Avatar" />
           </ion-avatar>
         </div>
 
@@ -124,7 +124,6 @@
           <button class="goat-btn-outline" (click)="editProfile()">
             Modifica profilo
           </button>
-          <button class="goat-btn-outline">Preferenze tutor / studente</button>
           <button class="goat-btn-clear danger" (click)="doLogout()">
             Esci dall’account
           </button>

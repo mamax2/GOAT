@@ -7,14 +7,16 @@
 
 <ion-content class="ion-padding edit-page">
   <div class="form-block">
-    <ion-label>Nome</ion-label>
-    <ion-input [(ngModel)]="name"></ion-input>
+    <ion-list>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
 
-    <ion-label>Materia principale</ion-label>
-    <ion-input [(ngModel)]="main_subject"></ion-input>
+      <ion-label position="stacked">Materia principale</ion-label>
+      <ion-input [(ngModel)]="main_subject"></ion-input>
 
-    <ion-label>Avatar URL</ion-label>
-    <ion-input [(ngModel)]="avatar_url"></ion-input>
+      <ion-label position="stacked">Avatar URL</ion-label>
+      <ion-input [(ngModel)]="avatar_url"></ion-input>
+    </ion-list>
 
     <button expand="block" class="goat-btn-outline" (click)="save()">
       Salva modifiche

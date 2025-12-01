@@ -49,7 +49,7 @@ export class ProfilePage {
   goatCoins = 0;
   lessonsAsTutor = 0;
   lessonsAsStudent = 0;
-  avatarUrl = 'https://i.pravatar.cc/300';
+  avatarUrl = '';
 
   constructor(private router: Router) {}
 

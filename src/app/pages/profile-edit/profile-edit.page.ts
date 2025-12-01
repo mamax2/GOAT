@@ -5,9 +5,8 @@ import {
   IonContent,
   IonHeader,
   IonInput,
-  IonTextarea,
-  IonButton,
   IonLabel,
+  IonList,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService, AuthUser } from 'src/app/core/services/auth-service';
@@ -18,14 +17,13 @@ import { AuthService, AuthUser } from 'src/app/core/services/auth-service';
   styleUrls: ['./profile-edit.page.scss'],
   standalone: true,
   imports: [
+    IonList,
     IonLabel,
     CommonModule,
     FormsModule,
     IonContent,
     IonHeader,
     IonInput,
-    IonTextarea,
-    IonButton,
   ],
 })
 export class ProfileEditPage {
