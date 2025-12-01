@@ -41,19 +41,52 @@ export class ProfilePage {
   acc2 = false;
 
   /* User data */
-  userName = 'Mario Rossi';
-  userRole = 'Tutor & Studente';
-  mainSubject = 'Matematica • Fisica';
-  level = 4;
-  goatCoins = 32;
-  nextLevel = 5;
-  lessonsAsTutor = 18;
-  lessonsAsStudent = 12;
+  userName = '';
+  userRole = '';
+  mainSubject = '';
+  level = 1;
+  nextLevel = 2;
+  goatCoins = 0;
+  lessonsAsTutor = 0;
+  lessonsAsStudent = 0;
+  avatarUrl = 'https://i.pravatar.cc/300';
 
   constructor(private router: Router) {}
 
-  goToHome() {
-    this.router.navigateByUrl('/home');
+  ngOnInit() {
+    this.loadProfile();
+  }
+
+  async loadProfile() {
+    try {
+      const res = await this.auth.me(); // ritorna { user: AuthUser }
+      const u = res.user;
+
+      if (!u) {
+        this.router.navigateByUrl('/login', { replaceUrl: true });
+        return;
+      }
+
+      this.userName = u.name;
+      this.userRole = this.mapRole(u.user_role);
+      this.mainSubject = u.main_subject || '—';
+      this.level = u.level;
+      this.nextLevel = u.level + 1;
+      this.goatCoins = u.goat_coins;
+      this.lessonsAsTutor = u.lessons_as_tutor;
+      this.lessonsAsStudent = u.lessons_as_student;
+      this.avatarUrl = u.avatar_url || this.avatarUrl;
+    } catch (err) {
+      console.error('Errore caricando il profilo:', err);
+      this.router.navigateByUrl('/login', { replaceUrl: true });
+    }
+  }
+
+  mapRole(role: string): string {
+    if (role === 'tutor') return 'Tutor';
+    if (role === 'both') return 'Tutor & Studente';
+    if (role === 'admin') return 'Admin';
+    return 'Studente';
   }
 
   get levelLabel(): string {
@@ -63,9 +96,17 @@ export class ProfilePage {
     return 'New GOAT';
   }
 
+  goToHome() {
+    this.router.navigateByUrl('/home');
+  }
+
+  editProfile() {
+    this.router.navigateByUrl('/profile-edit');
+  }
+
   async doLogout() {
     try {
-      await this.auth.logout(); // POST /api/logout.php { withCredentials: true }
+      await this.auth.logout();
       await this.router.navigateByUrl('/login', { replaceUrl: true });
     } catch (err) {
       console.error('Logout fallito', err);

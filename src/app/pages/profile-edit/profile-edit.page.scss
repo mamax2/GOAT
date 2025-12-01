@@ -1,0 +1,48 @@
+.hero-header {
+  background: transparent;
+  box-shadow: none;
+
+  .hero-profile {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 27%;
+    padding: 28px 20px 34px;
+  }
+
+  .back-btn {
+    color: white;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0;
+    color: white;
+  }
+}
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+
+  .header,
+  ion-label {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }
+
+  ion-list {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    max-width: 520px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    gap: 20px;
+  }
+}

@@ -121,7 +121,9 @@
       </ion-card-header>
       <ion-card-content>
         <div class="actions">
-          <button class="goat-btn-outline">Modifica profilo</button>
+          <button class="goat-btn-outline" (click)="editProfile()">
+            Modifica profilo
+          </button>
           <button class="goat-btn-outline">Preferenze tutor / studente</button>
           <button class="goat-btn-clear danger" (click)="doLogout()">
             Esci dall’account
