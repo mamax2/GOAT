@@ -3,6 +3,16 @@
 GOAT is a hybrid educational project and digital platform designed to create an accessible, dynamic, and student-centered learning environment.  
 It empowers young people to **learn, teach, share skills, and grow together**.
 
+---
+
+## Badges 📛
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-TBD-lightgrey)
+![Build](https://img.shields.io/badge/build-passing-success)
+
+---
+
 ## What GOAT Does ✨
 
 ### 🎓 Study Support
