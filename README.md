@@ -54,7 +54,7 @@ To create a place where every young person can discover their abilities, grow th
 ## License
 MIT License
 
-Copyright (c) [2026] [Sohail Mama]
+Copyright (c) 2026 Sohail Mama
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
