@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <div class="titles">
+      <h2>{{ data.title }}</h2>
+      <div class="subtitle">{{ data.subtitle }}</div>
+    </div>
+
+    <div class="icon">
+      <img [src]="'/assets/icons/' + data.icon + '.svg'" alt="" />
+    </div>
+  </div>
+
+  @if (data.type === 'lastminute' && isToday()) {
+  <div class="badge">Today</div>
+  }
+
+  <p class="description">
+    {{ data.description }}
+  </p>
+
+  <div class="footer">
+    <div class="info">
+      <span>{{ data.duration_hours }}h</span>
+      @if (data.total_spots) {
+      <span> – {{ data.remaining_spots }} posti </span>
+
+      }
+      <span>– {{ data.credits }} credits</span>
+    </div>
+
+    <button class="cta">
+      {{ data.cta_label }}
+    </button>
+  </div>
+</div>

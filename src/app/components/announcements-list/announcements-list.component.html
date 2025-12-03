@@ -1,0 +1,36 @@
+<div class="tabs-container">
+  <div
+    class="tab"
+    [class.active]="activeTab === 'richiesta'"
+    (click)="changeTab('richiesta')"
+  >
+    Richieste
+  </div>
+
+  <div
+    class="tab"
+    [class.active]="activeTab === 'offerta'"
+    (click)="changeTab('offerta')"
+  >
+    Offerte
+  </div>
+
+  <div
+    class="tab"
+    [class.active]="activeTab === 'lastminute'"
+    (click)="changeTab('lastminute')"
+  >
+    Last minute
+  </div>
+</div>
+
+@if (loading) {
+<div class="loading">Caricamento...</div>
+} @if (!loading) {
+<ng-container>
+  <app-announcement-card
+    *ngFor="let a of announcements"
+    [data]="a"
+  ></app-announcement-card>
+</ng-container>
+}

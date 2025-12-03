@@ -1,19 +1,73 @@
 <ion-header class="hero-header">
   <div class="hero mustard-gradient">
     <h1>Benvenut@ in <strong>GOAT</strong></h1>
-    <a (click)="goToProfile()"
-      ><img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo"
-    /></a>
+    <a (click)="goToProfile()">
+      <img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo" />
+    </a>
   </div>
 
   <div class="tabs">
-    <div class="tab active">Richieste</div>
-    <div class="tab">Offerte</div>
-    <div class="tab">Last minute</div>
+    <div
+      class="tab"
+      [class.active]="activeTab === 'richiesta'"
+      (click)="changeTab('richiesta')"
+    >
+      Richieste
+    </div>
+
+    <div
+      class="tab"
+      [class.active]="activeTab === 'offerta'"
+      (click)="changeTab('offerta')"
+    >
+      Offerte
+    </div>
+
+    <div
+      class="tab"
+      [class.active]="activeTab === 'lastminute'"
+      (click)="changeTab('lastminute')"
+    >
+      Last minute
+    </div>
   </div>
 </ion-header>
 
-<ion-content class="ion-padding page"> </ion-content>
+<ion-content class="ion-padding page">
+  <!-- LOADER -->
+  <div *ngIf="loading" class="loading">Caricamento...</div>
+
+  <!-- CARD LIST -->
+  <div *ngIf="!loading" class="card-list">
+    <div *ngFor="let a of announcements" class="request-card">
+      <!-- HEADER -->
+      <div class="card-header">
+        <h2>{{ a.title }}</h2>
+        <ion-icon [name]="a.icon || 'document-outline'"></ion-icon>
+      </div>
+
+      <!-- METADATA -->
+      <div class="card-meta">{{ a.subtitle }}</div>
+
+      <!-- DESCRIPTION -->
+      <div class="card-desc">{{ a.description }}</div>
+
+      <div class="divider"></div>
+
+      <!-- FOOTER -->
+      <div class="card-footer">
+        <div class="info">
+          {{ a.duration_hours }}h – {{ a.remaining_spots }} posti – {{ a.credits
+          }} credits
+        </div>
+
+        <ion-button class="proponiti" size="small">
+          {{ a.cta_label }}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
 
 <ion-footer class="bottom-nav">
   <ion-tab-bar>
