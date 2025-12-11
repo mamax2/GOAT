@@ -7,7 +7,7 @@ import { Announcement } from '../models/announcement.model';
   providedIn: 'root',
 })
 export class AnnouncementsService {
-  private baseUrl = 'http://localhost:8888/goat/api/announcements.php';
+  private baseUrl = 'http://localhost:8888/goat/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -16,8 +16,12 @@ export class AnnouncementsService {
   ): Observable<{ success: boolean; data: Announcement[] }> {
     const params = new HttpParams().set('type', type);
     return this.http.get<{ success: boolean; data: Announcement[] }>(
-      this.baseUrl,
+      this.baseUrl + 'announcements.php',
       { params }
     );
+  }
+
+  createAnnouncement(data: any) {
+    return this.http.post(this.baseUrl + 'admin_announcements.php', data);
   }
 }

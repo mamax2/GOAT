@@ -18,14 +18,10 @@
     {{ data.description }}
   </p>
 
-  <div class="footer">
+  <div class="footer" [ngClass]="getTypeClass()">
     <div class="info">
-      <span>{{ data.duration_hours }}h</span>
-      @if (data.total_spots) {
-      <span> – {{ data.remaining_spots }} posti </span>
-
-      }
-      <span>– {{ data.credits }} credits</span>
+      {{ data.duration_hours }}h – {{ data.remaining_spots }} posti –
+      {{ data.credits }} credits
     </div>
 
     <button class="cta">

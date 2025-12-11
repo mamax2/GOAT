@@ -32,4 +32,8 @@ export const routes: Routes = [
         (m) => m.ProfileEditPage
       ),
   },
+  {
+    path: 'new-announcement',
+    loadComponent: () => import('./pages/new-announcement/new-announcement.page').then( m => m.NewAnnouncementPage)
+  },
 ];

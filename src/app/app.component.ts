@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [
     IonApp,
     IonRouterOutlet,

@@ -83,6 +83,10 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/profile');
   }
 
+  goToAnnouncement() {
+    this.router.navigateByUrl('/new-announcement');
+  }
+
   changeTab(tab: 'richiesta' | 'offerta' | 'lastminute') {
     this.activeTab = tab;
     this.loadAnnouncements();
