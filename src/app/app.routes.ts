@@ -36,4 +36,8 @@ export const routes: Routes = [
     path: 'new-announcement',
     loadComponent: () => import('./pages/new-announcement/new-announcement.page').then( m => m.NewAnnouncementPage)
   },
+  {
+    path: 'wallet',
+    loadComponent: () => import('./pages/wallet/wallet.page').then( m => m.WalletPage)
+  },
 ];

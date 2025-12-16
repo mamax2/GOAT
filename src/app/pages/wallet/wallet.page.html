@@ -1,0 +1,46 @@
+<ion-header class="hero-header">
+  <div class="hero mustard-gradient">
+    <h1>Wallet</h1>
+
+    <a (click)="goToProfile()">
+      <img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo" />
+    </a>
+  </div>
+</ion-header>
+<ion-content fullscreen class="wallet-content">
+  <!-- HEADER TESTUALE -->
+
+  <!-- CARD CREDITI -->
+  <div class="credit-card">
+    <div class="credit-info">
+      <span class="label">Crediti disponibili</span>
+      <span class="amount">2,450</span>
+    </div>
+
+    <ion-button fill="solid" class="movements-btn"> Movimenti </ion-button>
+  </div>
+
+  <!-- SEZIONE COUPON -->
+  <div class="coupons-header">
+    <h2>Coupons</h2>
+
+    <ion-button fill="outline" size="small" class="filter-btn">
+      <ion-icon name="filter-outline" slot="start"></ion-icon>
+      Filtri
+    </ion-button>
+  </div>
+
+  <!-- LISTA COUPON -->
+  <div class="coupon-card" *ngFor="let coupon of coupons">
+    <div class="coupon-main">
+      <h3>{{ coupon.title }}</h3>
+      <p>{{ coupon.subtitle }}</p>
+    </div>
+
+    <div class="coupon-footer">
+      <span class="price">{{ coupon.cost }} credits</span>
+
+      <ion-button size="small" class="redeem-btn"> Riscatta </ion-button>
+    </div>
+  </div>
+</ion-content>

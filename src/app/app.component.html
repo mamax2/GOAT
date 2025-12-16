@@ -1,3 +1,29 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+
+  @if (showFooter) {
+  <ion-footer class="bottom-nav">
+    <ion-tab-bar>
+      <ion-tab-button routerLink="/home" routerDirection="root">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/wallet" routerDirection="root">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <ion-label>Wallet</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/annunci" routerDirection="root">
+        <ion-icon name="document-outline"></ion-icon>
+        <ion-label>Annunci</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/match" routerDirection="root">
+        <ion-icon name="people-outline"></ion-icon>
+        <ion-label>Match</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
+  }
 </ion-app>

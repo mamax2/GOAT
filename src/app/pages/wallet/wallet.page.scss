@@ -1,0 +1,129 @@
+.hero-header {
+  background: transparent;
+  box-shadow: none;
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 20px 24px;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+  }
+}
+
+.wallet-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-bottom: 24px;
+  background: #f4f6f8;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 8px 0 16px;
+}
+
+.credit-card {
+  background: linear-gradient(135deg, #e85b4f, #f7c56a);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin: 24px 0;
+
+  .label {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .movements-btn {
+    --background: #ffffff;
+    --color: #e85b4f;
+    --border-radius: 999px;
+    font-weight: 600;
+  }
+}
+
+/* HEADER COUPON */
+.coupons-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .filter-btn {
+    --border-radius: 999px;
+    --color: #333;
+    --border-color: #ddd;
+  }
+}
+
+/* CARD COUPON */
+.coupon-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 13px;
+    color: #666;
+    margin: 4px 0 12px;
+  }
+
+  .coupon-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+
+    .price {
+      color: #e85b4f;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .redeem-btn {
+      --background: #e85b4f;
+      --border-radius: 999px;
+      font-weight: 600;
+    }
+  }
+}
