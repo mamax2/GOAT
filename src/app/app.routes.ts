@@ -34,10 +34,23 @@ export const routes: Routes = [
   },
   {
     path: 'new-announcement',
-    loadComponent: () => import('./pages/new-announcement/new-announcement.page').then( m => m.NewAnnouncementPage)
+    loadComponent: () =>
+      import('./pages/new-announcement/new-announcement.page').then(
+        (m) => m.NewAnnouncementPage
+      ),
   },
   {
     path: 'wallet',
-    loadComponent: () => import('./pages/wallet/wallet.page').then( m => m.WalletPage)
+    loadComponent: () =>
+      import('./pages/wallet/wallet.page').then((m) => m.WalletPage),
+  },
+  {
+    path: 'annunci',
+    loadComponent: () =>
+      import('./pages/annunci/annunci.page').then((m) => m.AnnunciPage),
+  },
+  {
+    path: 'match',
+    loadComponent: () => import('./pages/match/match.page').then( m => m.MatchPage)
   },
 ];

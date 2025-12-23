@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 
 export interface AuthUser {
   id: number;
@@ -25,24 +25,22 @@ export interface AuthUser {
 export class AuthService {
   private base = 'http://localhost:8888/goat/api';
 
+  private userSubject = new BehaviorSubject<AuthUser | null>(null);
+  user$ = this.userSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
+  //auth
   async signup(
     name: string,
     email: string,
     password: string
   ): Promise<{ message: string }> {
-    const payload = {
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      password,
-    };
-
     try {
       return await firstValueFrom(
         this.http.post<{ message: string }>(
           `${this.base}/signup.php`,
-          payload,
+          { name: name.trim(), email: email.trim().toLowerCase(), password },
           { withCredentials: true }
         )
       );
@@ -55,19 +53,18 @@ export class AuthService {
     email: string,
     password: string
   ): Promise<{ message: string; user: AuthUser }> {
-    const payload = {
-      email: email.trim().toLowerCase(),
-      password,
-    };
-
     try {
-      return await firstValueFrom(
+      const res = await firstValueFrom(
         this.http.post<{ message: string; user: AuthUser }>(
           `${this.base}/login.php`,
-          payload,
+          { email: email.trim().toLowerCase(), password },
           { withCredentials: true }
         )
       );
+
+      this.userSubject.next(res.user);
+
+      return res;
     } catch (err) {
       throw this.normalizeError(err);
     }
@@ -75,12 +72,17 @@ export class AuthService {
 
   async me(): Promise<{ user: AuthUser }> {
     try {
-      return await firstValueFrom(
+      const res = await firstValueFrom(
         this.http.get<{ user: AuthUser }>(`${this.base}/me.php`, {
           withCredentials: true,
         })
       );
+
+      this.userSubject.next(res.user);
+
+      return res;
     } catch (err) {
+      this.userSubject.next(null);
       throw this.normalizeError(err);
     }
   }
@@ -91,42 +93,50 @@ export class AuthService {
         this.http.post(
           `${this.base}/logout.php`,
           {},
-          {
-            withCredentials: true,
-            responseType: 'text' as const,
-          }
+          { withCredentials: true, responseType: 'text' as const }
         )
       );
-    } catch (err) {
-      throw this.normalizeError(err);
+    } finally {
+      this.userSubject.next(null);
     }
   }
 
+  //profilo
   async updateProfile(
     data: Partial<AuthUser>
   ): Promise<{ success: boolean; message: string }> {
     try {
-      return await firstValueFrom(
+      const res = await firstValueFrom(
         this.http.post<{ success: boolean; message: string }>(
           `${this.base}/update_profile.php`,
           data,
           { withCredentials: true }
         )
       );
+
+      const current = this.userSubject.value;
+      if (current) {
+        this.userSubject.next({ ...current, ...data });
+      }
+
+      return res;
     } catch (err) {
       throw this.normalizeError(err);
     }
   }
 
+  //user
+  get currentUser(): AuthUser | null {
+    return this.userSubject.value;
+  }
+
   private normalizeError(err: any): Error {
     const http = err as HttpErrorResponse;
 
-    // Errori noti
     if (http.status === 401) return new Error('Unauthorized');
     if (http.status === 404) return new Error('Not Found');
     if (http.status === 500) return new Error('Server Error');
 
-    // Estraggo messaggio dal backend se presente
     const backend =
       http?.error?.error ||
       http?.error?.message ||

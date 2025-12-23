@@ -1,0 +1,121 @@
+.hero-header {
+  background: transparent;
+  box-shadow: none;
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 20px 24px;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+  }
+}
+
+.annunci-content {
+  background: #f4f6f8;
+  padding: 16px;
+}
+
+.tabs-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #999;
+    padding: 10px 0;
+    cursor: pointer;
+
+    &.active {
+      color: #000;
+      border-bottom: 3px solid #000;
+    }
+  }
+}
+
+.filter-btn {
+  --border-radius: 999px;
+  --border-color: #ddd;
+  margin-bottom: 16px;
+}
+
+.annuncio-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  .annuncio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .category-icon {
+      font-size: 26px;
+      color: #e7a07a;
+    }
+  }
+
+  .meta {
+    font-size: 13px;
+    color: #666;
+    margin: 6px 0;
+  }
+
+  .description {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  .annuncio-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+
+    .info {
+      color: #e07a5f;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .actions ion-button {
+      --padding-start: 6px;
+      --padding-end: 6px;
+    }
+  }
+}
+
+.fab-add {
+  --background: #e85b4f;
+}

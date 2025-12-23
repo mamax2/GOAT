@@ -44,13 +44,15 @@
   border-radius: 16px;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   color: #fff;
   margin: 24px 0;
+  height: 15%;
 
   .label {
-    font-size: 14px;
+    font-size: 17px;
     opacity: 0.9;
   }
 
@@ -58,13 +60,6 @@
     font-size: 32px;
     font-weight: 700;
     margin-top: 4px;
-  }
-
-  .movements-btn {
-    --background: #ffffff;
-    --color: #e85b4f;
-    --border-radius: 999px;
-    font-weight: 600;
   }
 }
 
@@ -78,12 +73,6 @@
   h2 {
     font-size: 18px;
     font-weight: 700;
-  }
-
-  .filter-btn {
-    --border-radius: 999px;
-    --color: #333;
-    --border-color: #ddd;
   }
 }
 
@@ -120,10 +109,9 @@
       font-size: 14px;
     }
 
-    .redeem-btn {
-      --background: #e85b4f;
-      --border-radius: 999px;
+    .goat-btn-outline {
       font-weight: 600;
+      width: 30%;
     }
   }
 }

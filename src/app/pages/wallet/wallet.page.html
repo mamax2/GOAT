@@ -8,26 +8,17 @@
   </div>
 </ion-header>
 <ion-content fullscreen class="wallet-content">
-  <!-- HEADER TESTUALE -->
-
   <!-- CARD CREDITI -->
   <div class="credit-card">
     <div class="credit-info">
-      <span class="label">Crediti disponibili</span>
-      <span class="amount">2,450</span>
+      <div class="label"><strong>GOAT Coins</strong> disponibili:</div>
+      <div class="amount">{{ credits | number }}</div>
     </div>
-
-    <ion-button fill="solid" class="movements-btn"> Movimenti </ion-button>
   </div>
 
   <!-- SEZIONE COUPON -->
   <div class="coupons-header">
     <h2>Coupons</h2>
-
-    <ion-button fill="outline" size="small" class="filter-btn">
-      <ion-icon name="filter-outline" slot="start"></ion-icon>
-      Filtri
-    </ion-button>
   </div>
 
   <!-- LISTA COUPON -->
@@ -38,9 +29,9 @@
     </div>
 
     <div class="coupon-footer">
-      <span class="price">{{ coupon.cost }} credits</span>
+      <span class="price">{{ coupon.cost }} GOAT Coins</span>
 
-      <ion-button size="small" class="redeem-btn"> Riscatta </ion-button>
+      <button class="goat-btn-outline">Riscatta</button>
     </div>
   </div>
 </ion-content>

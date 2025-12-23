@@ -1,0 +1,35 @@
+<!-- HEADER -->
+<ion-header class="hero-header">
+  <div class="hero mustard-gradient">
+    <h1>Match</h1>
+
+    <a (click)="goToProfile()">
+      <img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo" />
+    </a>
+  </div>
+</ion-header>
+
+<ion-content fullscreen class="match-content">
+  <!-- CARD MATCH -->
+  <div class="match-card" *ngFor="let match of matches">
+    <div class="card-header">
+      <h3>{{ match.title }}</h3>
+      <ion-icon [name]="match.icon" class="category-icon"></ion-icon>
+    </div>
+
+    <p class="meta">
+      {{ match.context }} - {{ match.level }} - {{ match.subject }} - {{
+      match.skill }}
+    </p>
+
+    <p class="description">{{ match.description }}</p>
+
+    <div class="card-footer">
+      <span class="info">
+        {{ match.date }} {{ match.time }} - {{ match.credits }} credits
+      </span>
+
+      <ion-button size="small" class="confirm-btn"> Convalida </ion-button>
+    </div>
+  </div>
+</ion-content>
