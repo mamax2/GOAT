@@ -14,6 +14,15 @@
       <div class="label"><strong>GOAT Coins</strong> disponibili:</div>
       <div class="amount">{{ credits | number }}</div>
     </div>
+    <ion-button class="movements-btn" (click)="openMovements()">
+      Movimenti
+    </ion-button>
+
+    <app-wallet-movements
+      [open]="movementsOpen"
+      [movements]="movements"
+      (close)="movementsOpen = false"
+    ></app-wallet-movements>
   </div>
 
   <!-- SEZIONE COUPON -->
@@ -31,7 +40,17 @@
     <div class="coupon-footer">
       <span class="price">{{ coupon.cost }} GOAT Coins</span>
 
-      <button class="goat-btn-outline">Riscatta</button>
+      <button
+        class="goat-btn-outline redeem-btn"
+        [class.redeemed]="coupon.redeemed"
+        [disabled]="coupon.redeemed || credits < coupon.cost || loadingCouponId === coupon.id"
+        (click)="redeemCoupon(coupon)"
+      >
+        @if (loadingCouponId !== coupon.id) {<span>
+          {{ coupon.redeemed ? 'Riscattato' : 'Riscatta' }}
+        </span>
+        } @else {<span class="spinner"></span>}
+      </button>
     </div>
   </div>
 </ion-content>

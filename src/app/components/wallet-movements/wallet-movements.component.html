@@ -1,0 +1,32 @@
+@if (open) {
+<div class="backdrop" (click)="onClose()"></div>
+}
+
+<div class="sheet" [class.open]="open">
+  <div class="handle"></div>
+
+  <div class="header">
+    <h2>Movimenti Wallet</h2>
+    <button class="close-btn" (click)="onClose()">✕</button>
+  </div>
+
+  @if (!movements.length) {
+  <div class="empty">
+    <ion-icon name="wallet-outline"></ion-icon>
+    <p>Nessun movimento disponibile</p>
+  </div>
+  } @if (movements.length) {
+  <div class="list">
+    @for (m of movements; track $index) {
+    <div class="item">
+      <div class="info">
+        <div class="amount">{{ m.code }}</div>
+        <span>{{ m.redeemed_at }}</span>
+      </div>
+
+      <div class="amount">−{{ m.cost }} GOAT Coins</div>
+    </div>
+    }
+  </div>
+  }
+</div>

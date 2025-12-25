@@ -145,4 +145,14 @@ export class AuthService {
 
     return new Error(backend || 'Errore di rete');
   }
+
+  updateLocalCredits(delta: number) {
+    const current = this.currentUser;
+    if (!current) return;
+
+    this.userSubject.next({
+      ...current,
+      goat_coins: current.goat_coins + delta,
+    });
+  }
 }
