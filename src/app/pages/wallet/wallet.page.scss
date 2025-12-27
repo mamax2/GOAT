@@ -83,6 +83,10 @@
       transform: scale(0.97);
       --box-shadow: 0 2px 8px rgba(232, 91, 79, 0.25);
     }
+
+    @media (min-width: 768px) {
+      margin-left: 75%;
+    }
   }
 }
 

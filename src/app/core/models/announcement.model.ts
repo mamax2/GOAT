@@ -1,22 +1,19 @@
 export interface Announcement {
   id: number;
-  type: 'request' | 'offer' | 'lastminute';
-
+  type: 'richiesta' | 'offerta';
   title: string;
-  subtitle: string;
+  subtitle?: string | null;
   description: string;
-
-  category?: string;
-  icon?: string;
-
+  category?: string | null;
   duration_hours: number;
   total_spots: number;
   remaining_spots: number;
   credits: number;
-
-  event_date?: string | null; // solo lastminute
+  event_date?: string | null;
   event_time?: string | null;
-
+  expires_at?: string | null;
   cta_label: string;
-  cta_action?: string;
+  cta_action?: string | null;
+  priority?: number;
+  created_at?: string;
 }

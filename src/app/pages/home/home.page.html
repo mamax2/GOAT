@@ -40,11 +40,15 @@
 
   <!-- CARD LIST -->
   <div *ngIf="!loading" class="card-list">
-    <div *ngFor="let a of announcements" class="request-card">
+    <div
+      *ngFor="let a of announcements"
+      class="request-card"
+      [class.urgent]="isUrgent(a)"
+    >
       <!-- HEADER -->
       <div class="card-header">
         <h2>{{ a.title }}</h2>
-        <ion-icon [name]="a.icon || 'document-outline'"></ion-icon>
+        <span *ngIf="isUrgent(a)" class="urgent-badge"> Scade oggi </span>
       </div>
 
       <!-- METADATA -->
@@ -62,7 +66,12 @@
           }} credits
         </div>
 
-        <ion-button class="proponiti" size="small">
+        <ion-button
+          class="proponiti"
+          size="small"
+          [disabled]="a.remaining_spots === 0"
+          (click)="onCtaClick(a)"
+        >
           {{ a.cta_label }}
         </ion-button>
       </div>

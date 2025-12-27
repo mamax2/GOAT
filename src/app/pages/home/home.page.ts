@@ -1,53 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonButton,
-  IonIcon,
-  IonCard,
-  IonTabBar,
-  IonTabButton,
-  IonFooter,
-  IonRouterLinkWithHref,
-} from '@ionic/angular/standalone';
+import { IonHeader, IonContent, IonButton } from '@ionic/angular/standalone';
 
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth-service';
 import { AnnouncementsService } from 'src/app/core/services/announcements-service';
 import { Announcement } from 'src/app/core/models/announcement.model';
 
-// SERVIZIO ANNUNCI
-
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [
-    IonFooter,
-    IonTabButton,
-    IonTabBar,
-    IonCard,
-    IonIcon,
-    CommonModule,
-    FormsModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonInput,
-    IonButton,
-    IonRouterLinkWithHref,
-  ],
+  imports: [CommonModule, FormsModule, IonHeader, IonContent, IonButton],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
@@ -79,6 +43,13 @@ export class HomePage implements OnInit {
     }
   }
 
+  isUrgent(a: Announcement): boolean {
+    if (!a.expires_at) return false;
+
+    const today = new Date().toISOString().slice(0, 10);
+    return a.expires_at.startsWith(today);
+  }
+
   goToProfile() {
     this.router.navigateByUrl('/profile');
   }
@@ -100,5 +71,18 @@ export class HomePage implements OnInit {
         this.announcements = res.data;
         this.loading = false;
       });
+  }
+
+  onCtaClick(a: Announcement) {
+    this.announcementsService.joinAnnouncement(a.id).subscribe({
+      next: () => {
+        a.remaining_spots--;
+
+        alert('Operazione riuscita');
+      },
+      error: (err) => {
+        alert(err?.error?.error || 'Errore durante l’operazione');
+      },
+    });
   }
 }

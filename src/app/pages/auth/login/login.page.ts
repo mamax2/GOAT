@@ -20,16 +20,12 @@ import { AuthService } from 'src/app/core/services/auth-service';
   standalone: true,
   selector: 'app-login',
   imports: [
-    IonButton,
-    IonIcon,
     IonChip,
     FormsModule,
     IonContent,
     IonHeader,
-    IonTitle,
     IonItem,
     IonInput,
-
     IonList,
     IonLabel,
   ],

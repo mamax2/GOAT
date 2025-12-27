@@ -100,6 +100,16 @@
       font-weight: 700;
       margin: 0;
     }
+    .urgent-badge {
+      background: #ff4d4f;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
     ion-icon {
       color: var(--ion-color-primary);
       font-size: 1.4rem;
@@ -140,6 +150,11 @@
       font-weight: 600;
     }
   }
+}
+
+.request-card.urgent {
+  border-left: 4px solid #ff4d4f;
+  background: #fff7f7;
 }
 
 .goat-btn-outline {

@@ -21,7 +21,6 @@ import { AuthService } from 'src/app/core/services/auth-service';
     FormsModule,
     IonContent,
     IonHeader,
-    IonTitle,
     IonItem,
     IonInput,
     IonList,

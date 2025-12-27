@@ -68,24 +68,26 @@ export class WalletPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.auth.user$.subscribe((user) => {
-      this.user = user ?? undefined;
-      this.credits = user?.goat_coins ?? 0;
+    this.auth.user$.subscribe(async (user) => {
+      if (!user) return;
+
+      this.user = user;
+      this.credits = user.goat_coins;
+
+      await this.loadRedeemedState();
     });
 
     if (!this.auth.currentUser) {
       this.auth.me();
     }
-
-    this.loadRedeemedState();
   }
 
   private async loadRedeemedState() {
     try {
       this.movements = await this.walletService.getMovements();
       this.markRedeemedCoupons();
-    } catch (err) {
-      console.warn('Impossibile caricare stato coupon riscattati');
+    } catch {
+      console.warn('Impossibile caricare stato wallet');
     }
   }
 
