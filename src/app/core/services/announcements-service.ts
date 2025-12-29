@@ -23,13 +23,58 @@ export class AnnouncementsService {
   }
 
   createAnnouncement(data: any) {
-    return this.http.post(this.baseUrl + 'admin_announcements.php', data);
+    return this.http.post(this.baseUrl + 'new_announcements.php', data, {
+      withCredentials: true,
+    });
   }
 
   joinAnnouncement(announcementId: number) {
     return this.http.post<{ success: boolean }>(
       `${this.baseUrl}join.php`,
       { announcement_id: announcementId },
+      { withCredentials: true }
+    );
+  }
+
+  getPublished() {
+    return this.http.get<{ data: any[] }>(
+      `${this.baseUrl}my_announcements.php`,
+      { withCredentials: true }
+    );
+  }
+
+  getFollowed() {
+    return this.http.get<{ data: any[] }>(
+      `${this.baseUrl}followed_announcements.php`,
+      { withCredentials: true }
+    );
+  }
+
+  getAnnouncement(id: number) {
+    return this.http.get<{ data: Announcement }>(
+      `${this.baseUrl}get_announcement.php?id=${id}`,
+      { withCredentials: true }
+    );
+  }
+
+  updateAnnouncement(data: any) {
+    return this.http.post(`${this.baseUrl}update_announcement.php`, data, {
+      withCredentials: true,
+    });
+  }
+
+  deleteAnnouncement(id: number) {
+    return this.http.post<{ success: boolean }>(
+      `${this.baseUrl}delete_announcement.php`,
+      { id },
+      { withCredentials: true }
+    );
+  }
+
+  leaveAnnouncement(id: number) {
+    return this.http.post<{ success: boolean }>(
+      `${this.baseUrl}leave_announcement.php`,
+      { announcement_id: id },
       { withCredentials: true }
     );
   }

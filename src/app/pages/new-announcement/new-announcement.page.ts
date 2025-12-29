@@ -14,6 +14,7 @@ import {
   IonSelectOption,
   IonButton,
   IonDatetime,
+  IonToggle,
 } from '@ionic/angular/standalone';
 
 import { Router } from '@angular/router';
@@ -38,54 +39,84 @@ import { AnnouncementsService } from 'src/app/core/services/announcements-servic
     IonSelectOption,
     IonButton,
     IonDatetime,
+    IonToggle,
   ],
 })
 export class NewAnnouncementPage {
   private router = inject(Router);
   private service = inject(AnnouncementsService);
 
-  form: any = {
-    type: 'request',
+  form = {
+    type: 'richiesta' as 'richiesta' | 'offerta',
     title: '',
     subtitle: '',
     description: '',
     category: '',
-    icon: '',
     duration_hours: 1,
     total_spots: 1,
-    remaining_spots: 1,
     credits: 10,
-    event_date: null,
-    event_time: null,
-    cta_label: '',
-    cta_action: '',
+    event_date: null as string | null,
+    event_time: null as string | null,
+    is_lastminute: false,
   };
 
   loading = false;
   error = '';
   success = false;
 
+  private resetForm() {
+    this.form = {
+      type: 'richiesta' as 'richiesta' | 'offerta',
+      title: '',
+      subtitle: '',
+      description: '',
+      category: '',
+      duration_hours: 1,
+      total_spots: 1,
+      credits: 10,
+      event_date: null,
+      event_time: null,
+      is_lastminute: false,
+    };
+
+    this.error = '';
+    // this.success = false;
+  }
+
   submit() {
     this.loading = true;
     this.error = '';
 
-    this.service.createAnnouncement(this.form).subscribe({
+    const payload = {
+      ...this.form,
+      event_date: this.form.event_date
+        ? this.form.event_date.split('T')[0]
+        : null,
+      event_time: this.form.event_time
+        ? this.form.event_time.split('T')[1]?.substring(0, 8)
+        : null,
+    };
+
+    this.service.createAnnouncement(payload).subscribe({
       next: () => {
         this.loading = false;
         this.success = true;
-        // Torna alla home dopo 1 secondo
+
+        this.resetForm();
+
         setTimeout(() => {
-          this.router.navigateByUrl('/home');
-        }, 1000);
+          this.router.navigateByUrl('/annunci');
+        }, 800);
       },
       error: (err) => {
         this.loading = false;
-        this.error = 'Errore durante il salvataggio.';
+        this.error = 'Errore durante il salvataggio';
         console.error(err);
       },
     });
   }
-  goToHome() {
-    this.router.navigateByUrl('/home');
+
+  goToAnnunci() {
+    this.router.navigateByUrl('/annunci');
   }
 }

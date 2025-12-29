@@ -51,6 +51,14 @@ export const routes: Routes = [
   },
   {
     path: 'match',
-    loadComponent: () => import('./pages/match/match.page').then( m => m.MatchPage)
+    loadComponent: () =>
+      import('./pages/match/match.page').then((m) => m.MatchPage),
+  },
+  {
+    path: 'edit-announcement/:id',
+    loadComponent: () =>
+      import('./pages/edit-announcement/edit-announcement.page').then(
+        (m) => m.EditAnnouncementPage
+      ),
   },
 ];

@@ -2,26 +2,47 @@
   background: transparent;
   box-shadow: none;
 
+  .back-btn {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.8rem;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+
   .hero-profile {
     display: flex;
     align-items: center;
-    justify-content: left;
-    gap: 27%;
+    justify-content: space-between;
     padding: 28px 20px 34px;
-  }
-
-  .back-btn {
-    color: white;
-    font-weight: 700;
-    font-size: 1.8rem;
+    gap: 12px;
   }
 
   .hero-title {
-    font-size: 1.4rem;
-    font-weight: 800;
     margin: 0;
-    color: white;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-align: center;
+    flex: 1;
   }
+
+  .right-spacer {
+    width: 44px;
+  }
+}
+
+ion-datetime {
+  margin: 20px 0;
+  border-radius: 20px;
+}
+
+ion-input {
+  text-align: right;
 }
 
 .error {
@@ -34,7 +55,7 @@
   color: var(--ion-color-success);
   margin-top: 12px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .form-footer {

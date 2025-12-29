@@ -1,0 +1,80 @@
+<ion-header class="hero-header">
+  <div class="hero mustard-gradient">
+    <h1>Modifica annuncio</h1>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="loading">Caricamento…</div>
+
+  <form *ngIf="!loading" class="edit-form">
+    <ion-item>
+      <ion-label position="stacked">Titolo</ion-label>
+      <ion-input [(ngModel)]="announcement.title" name="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Categoria/e</ion-label>
+      <ion-input
+        [(ngModel)]="announcement.subtitle"
+        name="subtitle"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descrizione</ion-label>
+      <ion-textarea
+        rows="5"
+        [(ngModel)]="announcement.description"
+        name="description"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Durata (ore)</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="announcement.duration_hours"
+        name="duration"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Posti totali</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="announcement.total_spots"
+        name="spots"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Crediti</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="announcement.credits"
+        name="credits"
+      ></ion-input>
+    </ion-item>
+
+    <div class="actions">
+      <ion-button
+        expand="block"
+        color="primary"
+        [disabled]="saving"
+        (click)="save()"
+      >
+        Salva modifiche
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="medium"
+        (click)="cancel()"
+      >
+        Annulla
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

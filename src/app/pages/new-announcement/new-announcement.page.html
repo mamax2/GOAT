@@ -1,102 +1,128 @@
 <ion-header class="hero-header">
   <div class="hero mustard-gradient hero-profile">
-    <a class="back-btn" (click)="goToHome()">&#8592;</a>
+    <a class="back-btn" (click)="goToAnnunci()">&#8592;</a>
     <h1 class="hero-title">Pubblica un annuncio</h1>
+    <div class="right-spacer"></div>
   </div>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-list>
+    <!-- TIPO -->
     <ion-item>
       <ion-label>Tipo</ion-label>
-      <ion-select [(ngModel)]="form.type">
-        <ion-select-option value="request">Richiesta</ion-select-option>
-        <ion-select-option value="offer">Offerta</ion-select-option>
-        <ion-select-option value="lastminute">Last minute</ion-select-option>
+      <ion-select [(ngModel)]="form.type" name="type">
+        <ion-select-option value="richiesta">Richiesta</ion-select-option>
+        <ion-select-option value="offerta">Offerta</ion-select-option>
       </ion-select>
     </ion-item>
 
+    <!-- TITOLO -->
     <ion-item>
       <ion-label position="stacked">Titolo</ion-label>
-      <ion-input [(ngModel)]="form.title"></ion-input>
+      <ion-textarea
+        rows="2"
+        autoGrow="true"
+        [(ngModel)]="form.title"
+        name="title"
+        placeholder="Es. Matematica per superiori"
+      ></ion-textarea>
     </ion-item>
 
+    <!-- TAG / CATEGORIA -->
     <ion-item>
-      <ion-label position="stacked">Sottotitolo</ion-label>
-      <ion-input [(ngModel)]="form.subtitle"></ion-input>
+      <ion-label position="stacked">Categoria / Livello</ion-label>
+      <ion-textarea
+        rows="2"
+        autoGrow="true"
+        [(ngModel)]="form.subtitle"
+        name="subtitle"
+        placeholder="scuola · superiori · matematica"
+      ></ion-textarea>
     </ion-item>
 
+    <!-- DESCRIZIONE -->
     <ion-item>
       <ion-label position="stacked">Descrizione</ion-label>
-      <ion-textarea rows="3" [(ngModel)]="form.description"></ion-textarea>
+      <ion-textarea
+        rows="4"
+        autoGrow="true"
+        [(ngModel)]="form.description"
+        name="description"
+        placeholder="Descrivi l’annuncio in modo chiaro e completo"
+      ></ion-textarea>
     </ion-item>
 
+    <!-- DURATA -->
     <ion-item>
-      <ion-label position="stacked">Categoria</ion-label>
-      <ion-input [(ngModel)]="form.category"></ion-input>
+      <ion-label>Durata (ore)</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="form.duration_hours"
+        name="duration_hours"
+        min="1"
+      ></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Icona (nome Ionicon)</ion-label>
-      <ion-input placeholder="book-outline" [(ngModel)]="form.icon"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Durata (h)</ion-label>
-      <ion-input type="number" [(ngModel)]="form.duration_hours"></ion-input>
-    </ion-item>
-
+    <!-- POSTI -->
     <ion-item>
       <ion-label>Posti totali</ion-label>
-      <ion-input type="number" [(ngModel)]="form.total_spots"></ion-input>
+      <ion-input
+        type="number"
+        [(ngModel)]="form.total_spots"
+        name="total_spots"
+        min="1"
+      ></ion-input>
     </ion-item>
 
+    <!-- CREDITI -->
     <ion-item>
-      <ion-label>Posti liberi</ion-label>
-      <ion-input type="number" [(ngModel)]="form.remaining_spots"></ion-input>
+      <ion-label>Crediti</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="form.credits"
+        name="credits"
+        min="1"
+      ></ion-input>
     </ion-item>
 
+    <!-- EVENTO -->
+
+    <!-- DATA -->
     <ion-item>
-      <ion-label>Credits</ion-label>
-      <ion-input type="number" [(ngModel)]="form.credits"></ion-input>
-    </ion-item>
-
-    <ion-item *ngIf="form.type === 'lastminute'">
       <ion-label>Data evento</ion-label>
+      <br />
       <ion-datetime
         presentation="date"
         [(ngModel)]="form.event_date"
+        name="event_date"
       ></ion-datetime>
     </ion-item>
 
-    <ion-item *ngIf="form.type === 'lastminute'">
+    <!-- ORA -->
+    <ion-item>
       <ion-label>Ora evento</ion-label>
+      <br />
       <ion-datetime
         presentation="time"
         [(ngModel)]="form.event_time"
+        name="event_time"
       ></ion-datetime>
     </ion-item>
 
+    <!-- LAST MINUTE -->
     <ion-item>
-      <ion-label position="stacked">Etichetta pulsante (CTA)</ion-label>
-      <ion-input
-        placeholder="Proponiti, Partecipa..."
-        [(ngModel)]="form.cta_label"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Azione pulsante (URL)</ion-label>
-      <ion-input
-        placeholder="/annuncio/12"
-        [(ngModel)]="form.cta_action"
-      ></ion-input>
+      <ion-label>Scade oggi</ion-label>
+      <ion-toggle
+        [(ngModel)]="form.is_lastminute"
+        name="is_lastminute"
+      ></ion-toggle>
     </ion-item>
   </ion-list>
 
   <div class="form-footer">
     <ion-button expand="block" (click)="submit()" [disabled]="loading">
-      {{ loading ? 'Salvataggio...' : 'Pubblica annuncio' }}
+      {{ loading ? 'Salvataggio…' : 'Pubblica annuncio' }}
     </ion-button>
 
     <div *ngIf="error" class="error">{{ error }}</div>

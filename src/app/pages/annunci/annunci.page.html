@@ -14,7 +14,7 @@
     <button
       class="tab"
       [class.active]="activeTab === 'seguiti'"
-      (click)="activeTab = 'seguiti'"
+      (click)="switchTab('seguiti')"
     >
       Annunci seguiti
     </button>
@@ -22,7 +22,7 @@
     <button
       class="tab"
       [class.active]="activeTab === 'pubblicati'"
-      (click)="activeTab = 'pubblicati'"
+      (click)="switchTab('pubblicati')"
     >
       Annunci pubblicati
     </button>
@@ -37,32 +37,50 @@
   </button>
 
   <!-- CARD ANNUNCIO -->
-  <div class="annuncio-card" *ngFor="let annuncio of annunci">
-    <div class="annuncio-header">
-      <h3>{{ annuncio.title }}</h3>
-      <ion-icon name="school-outline" class="category-icon"></ion-icon>
+  <div class="request-card" *ngFor="let annuncio of annunci">
+    <!-- HEADER -->
+    <div class="card-header">
+      <h2>{{ annuncio.title }}</h2>
     </div>
 
-    <p class="meta">
-      {{ annuncio.school }} - {{ annuncio.level }} - {{ annuncio.subject }} - {{
-      annuncio.skill }}
-    </p>
+    <!-- META -->
+    <div class="card-meta">{{ annuncio.subtitle }}</div>
 
-    <p class="description">{{ annuncio.description }}</p>
+    <!-- DESCRIPTION -->
+    <div class="card-desc">{{ annuncio.description }}</div>
 
-    <div class="annuncio-footer">
-      <span class="info">
-        {{ annuncio.hours }}h - {{ annuncio.seats }} posti - {{ annuncio.credits
-        }} credits
-      </span>
+    <div class="divider"></div>
+
+    <!-- FOOTER -->
+    <div class="card-footer">
+      <div class="info">
+        {{ annuncio.duration_hours }}h – {{ annuncio.remaining_spots }} posti –
+        {{ annuncio.credits }} GOAT Coins
+      </div>
 
       <div class="actions">
-        <ion-button fill="clear" color="danger">
-          <ion-icon name="trash-outline"></ion-icon>
+        <ion-button
+          *ngIf="activeTab === 'pubblicati'"
+          color="danger"
+          (click)="delete(annuncio.id)"
+        >
+          Elimina
         </ion-button>
 
-        <ion-button fill="clear" color="success">
-          <ion-icon name="create-outline"></ion-icon>
+        <ion-button
+          *ngIf="activeTab === 'pubblicati'"
+          color="warning"
+          (click)="edit(annuncio.id)"
+        >
+          Modifica
+        </ion-button>
+
+        <ion-button
+          *ngIf="activeTab === 'seguiti'"
+          color="danger"
+          (click)="leave(annuncio.id)"
+        >
+          Ritirati
         </ion-button>
       </div>
     </div>
