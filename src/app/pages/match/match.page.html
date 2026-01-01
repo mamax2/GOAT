@@ -1,4 +1,3 @@
-<!-- HEADER -->
 <ion-header class="hero-header">
   <div class="hero mustard-gradient">
     <h1>Match</h1>
@@ -7,29 +6,71 @@
       <img src="assets/images/goat_logo.png" alt="GOAT" class="hero-logo" />
     </a>
   </div>
+
+  <div class="tabs">
+    <div
+      class="tab"
+      [class.active]="activeTab === 'pending'"
+      (click)="switchTab('pending')"
+    >
+      In attesa
+    </div>
+    <div
+      class="tab"
+      [class.active]="activeTab === 'confirmed'"
+      (click)="switchTab('confirmed')"
+    >
+      Completati
+    </div>
+  </div>
 </ion-header>
 
 <ion-content fullscreen class="match-content">
-  <!-- CARD MATCH -->
-  <div class="match-card" *ngFor="let match of matches">
+  <div *ngIf="loading" class="loading">Caricamento...</div>
+
+  <div *ngIf="!loading && filtered.length === 0" class="empty">
+    Nessun match in questa sezione.
+  </div>
+
+  <div class="request-card" *ngFor="let m of filtered">
     <div class="card-header">
-      <h3>{{ match.title }}</h3>
-      <ion-icon [name]="match.icon" class="category-icon"></ion-icon>
+      <h2>{{ m.title }}</h2>
+
+      <span
+        class="status-badge"
+        [class.pending]="m.match_status === 'pending'"
+        [class.confirmed]="m.match_status === 'confirmed'"
+      >
+        {{ badgeLabel(m.match_status) }}
+      </span>
     </div>
 
-    <p class="meta">
-      {{ match.context }} - {{ match.level }} - {{ match.subject }} - {{
-      match.skill }}
-    </p>
+    <div class="card-meta">{{ m.subtitle }}</div>
+    <div class="card-desc">{{ m.description }}</div>
 
-    <p class="description">{{ match.description }}</p>
+    <div class="divider"></div>
 
     <div class="card-footer">
-      <span class="info">
-        {{ match.date }} {{ match.time }} - {{ match.credits }} credits
-      </span>
+      <div class="info">{{ m.credits }} GOAT Coins</div>
 
-      <ion-button size="small" class="confirm-btn"> Convalida </ion-button>
+      <ion-button
+        size="small"
+        class="proponiti"
+        *ngIf="m.match_status === 'pending'"
+        (click)="showCode(m)"
+      >
+        Convalida
+      </ion-button>
+
+      <ion-button
+        size="small"
+        class="proponiti"
+        color="success"
+        *ngIf="m.match_status === 'confirmed'"
+        disabled="true"
+      >
+        Confermato
+      </ion-button>
     </div>
   </div>
 </ion-content>

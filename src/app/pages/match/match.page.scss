@@ -33,60 +33,131 @@
   padding: 16px;
 }
 
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 12px;
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 700;
+    color: #777;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+
+    &.active {
+      color: #111;
+      border-bottom-color: #111;
+    }
+  }
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+
+  &.pending {
+    background: #fff3cd;
+    color: #8a6d3b;
+  }
+
+  &.confirmed {
+    background: #d4edda;
+    color: #155724;
+  }
+}
+
+.empty {
+  padding: 18px;
+  color: #777;
+  text-align: center;
+}
+
+.loading {
+  padding: 18px;
+}
+
 /* CARD */
-.match-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+.request-card {
+  border-radius: 18px;
+  padding: 16px 18px;
+  background: var(--surface, #fffdfa);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
 
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 4px;
 
-    h3 {
-      font-size: 18px;
+    h2 {
+      font-size: 1.05rem;
       font-weight: 700;
       margin: 0;
     }
 
-    .category-icon {
-      font-size: 26px;
-      color: #e85b4f;
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+
+      &.pending {
+        background: #ffb703;
+        color: #000;
+      }
+
+      &.confirmed {
+        background: #2ecc71;
+        color: #fff;
+      }
     }
   }
 
-  .meta {
-    font-size: 13px;
-    color: #666;
-    margin: 6px 0;
+  .card-meta {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 8px;
   }
 
-  .description {
-    font-size: 14px;
+  .card-desc {
+    font-size: 0.9rem;
     color: #333;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    margin-bottom: 8px;
   }
 
   .card-footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #eee;
-    padding-top: 12px;
+    justify-content: space-between;
 
     .info {
-      color: #e85b4f;
+      color: var(--ion-color-danger, #e64b3b);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 0.85rem;
     }
 
-    .confirm-btn {
-      --background: #e85b4f;
+    .proponiti {
       --border-radius: 999px;
+      --background: var(--ion-color-primary);
+      --color: white;
       font-weight: 600;
+    }
+
+    .confirmed-btn {
+      --background: #2ecc71;
     }
   }
 }

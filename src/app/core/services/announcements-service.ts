@@ -30,7 +30,7 @@ export class AnnouncementsService {
 
   joinAnnouncement(announcementId: number) {
     return this.http.post<{ success: boolean }>(
-      `${this.baseUrl}join.php`,
+      `${this.baseUrl}join_announcement.php`,
       { announcement_id: announcementId },
       { withCredentials: true }
     );

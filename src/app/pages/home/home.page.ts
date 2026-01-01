@@ -34,15 +34,6 @@ export class HomePage implements OnInit {
     this.loadAnnouncements();
   }
 
-  async doLogout() {
-    try {
-      await this.auth.logout();
-      await this.router.navigateByUrl('/login', { replaceUrl: true });
-    } catch (err) {
-      console.error('Logout fallito', err);
-    }
-  }
-
   isUrgent(a: Announcement): boolean {
     if (!a.expires_at) return false;
 
